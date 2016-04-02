@@ -1,8 +1,8 @@
-<?php namespace Modules\Auth\Providers;
+<?php namespace Modules\Users\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AuthServiceProvider extends ServiceProvider {
+class UsersServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -41,10 +41,10 @@ class AuthServiceProvider extends ServiceProvider {
 	protected function registerConfig()
 	{
 		$this->publishes([
-		    __DIR__.'/../Config/config.php' => config_path('auth.php'),
+		    __DIR__.'/../Config/config.php' => config_path('users.php'),
 		]);
 		$this->mergeConfigFrom(
-		    __DIR__.'/../Config/config.php', 'auth'
+		    __DIR__.'/../Config/config.php', 'users'
 		);
 	}
 
@@ -55,7 +55,7 @@ class AuthServiceProvider extends ServiceProvider {
 	 */
 	public function registerViews()
 	{
-		$viewPath = base_path('resources/views/modules/auth');
+		$viewPath = base_path('resources/views/modules/users');
 
 		$sourcePath = __DIR__.'/../Resources/views';
 
@@ -64,8 +64,8 @@ class AuthServiceProvider extends ServiceProvider {
 		]);
 
 		$this->loadViewsFrom(array_merge(array_map(function ($path) {
-			return $path . '/modules/auth';
-		}, \Config::get('view.paths')), [$sourcePath]), 'auth');
+			return $path . '/modules/users';
+		}, \Config::get('view.paths')), [$sourcePath]), 'users');
 	}
 
 	/**
@@ -75,12 +75,12 @@ class AuthServiceProvider extends ServiceProvider {
 	 */
 	public function registerTranslations()
 	{
-		$langPath = base_path('resources/lang/modules/auth');
+		$langPath = base_path('resources/lang/modules/users');
 
 		if (is_dir($langPath)) {
-			$this->loadTranslationsFrom($langPath, 'auth');
+			$this->loadTranslationsFrom($langPath, 'users');
 		} else {
-			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'auth');
+			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'users');
 		}
 	}
 

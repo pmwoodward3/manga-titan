@@ -1,9 +1,9 @@
-<?php namespace Modules\Auth\Database\Seeders;
+<?php namespace Modules\Users\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class AuthDatabaseSeeder extends Seeder {
+class UsersDatabaseSeeder extends Seeder {
 
 	/**
 	 * Run the database seeds.

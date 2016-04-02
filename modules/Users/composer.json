@@ -1,5 +1,5 @@
 {
-	"name": "pingpong-modules/auth",
+	"name": "pingpong-modules/users",
 	"description": "",
 	"authors": [
 		{
@@ -9,7 +9,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"Modules\\Auth\\": ""
+			"Modules\\Users\\": ""
 		}
 	}
 }
