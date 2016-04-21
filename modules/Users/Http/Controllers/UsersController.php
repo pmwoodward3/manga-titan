@@ -69,6 +69,7 @@ class UsersController extends Controller {
 
 		return redirect()->route('user.login');
 	}
+
 	public function security() {
 		return view('users::security');
 	}
@@ -92,6 +93,10 @@ class UsersController extends Controller {
 
 	public function profile() {
 		return view('users::profile');
+	}
+
+	public function manga() {
+		return view('users::manga');
 	}
 	
 }

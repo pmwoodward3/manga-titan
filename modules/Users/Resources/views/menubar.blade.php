@@ -13,7 +13,7 @@
 			<div class="divider"></div>
 			@endif
 			<a href="{{ route('user.profile') }}" class="item">My Profile</a>
-			<a href="{{ route('user.changepass') }}" class="item">Change Password</a>
+			<a href="{{ route('user.security') }}" class="item">Change Password</a>
 			<a href="{{ route('user.logout') }}" class="item">Log Out</a>
 		</div>
 	</div>
