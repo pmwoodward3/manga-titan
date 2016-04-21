@@ -21,6 +21,17 @@
 		@yield('sidebar')
 
 		<div class="pusher">
+			@section('pageMenu')
+			<div class="ui borderless manga menu">
+				<div class="ui container">
+					<div class="header item">
+						<img class="logo" src="{{ asset('logo.png') }}">
+						Manga Titan
+					</div>
+					@yield('pageMenubar')
+				</div>
+			</div>
+			@show
 			@yield('pageContent')
 		</div>
 
@@ -40,6 +51,6 @@
 				$('.ui.progress').progress();
 			});
 		</script>
-		
+		@include('footer');
 	</body>
 </html>

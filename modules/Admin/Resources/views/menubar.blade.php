@@ -1,9 +1,11 @@
 @set('user', Sentinel::getUser())
 
+@section('pageMenu')
 <div id="admin-menu" class="ui borderless menu">
 	<div class="ui container">
-		<div class="item">
-			<img src="{{ asset('logo.png') }}">
+		<div class="item header">
+			<img class="logo" src="{{ asset('logo.png') }}">
+			Manga Titan
 		</div>
 		<div class="right menu">
 			<div class="ui pointing dropdown menubar link item">
@@ -20,3 +22,4 @@
 		</div>
 	</div>
 </div>
+@endsection

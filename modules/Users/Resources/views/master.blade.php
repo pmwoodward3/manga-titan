@@ -15,9 +15,11 @@
 @endsection
 
 @section('pageContent')
-@include('users::menubar')
 <div class="ui container grid">
 	@yield('content')
 </div>
-@include('users::footer')
+@endsection
+
+@section('pageMenubar')
+@include('users::menubar')
 @endsection

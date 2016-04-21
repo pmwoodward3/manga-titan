@@ -10,9 +10,15 @@
 @endsection
 
 @section('pageContent')
-@include('manga::menubar')
 <app-page url-ajax="{{ route('core.ajax') }}">
 	@yield('content')
 </app-page>
-@include('manga::footer')
+@endsection
+
+@section('pageMenu')
+@parent
+@endsection
+
+@section('pageMenubar')
+@include('manga::menubar')
 @endsection
