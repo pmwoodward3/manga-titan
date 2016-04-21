@@ -69,8 +69,8 @@ class UsersController extends Controller {
 
 		return redirect()->route('user.login');
 	}
-	public function changepass() {
-		return view('users::changepass');
+	public function security() {
+		return view('users::security');
 	}
 
 	public function updatepass(PasswordReq $r) {

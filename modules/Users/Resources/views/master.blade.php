@@ -23,3 +23,7 @@
 @section('pageMenubar')
 @include('users::menubar')
 @endsection
+
+@section('pageFooter')
+
+@endsection

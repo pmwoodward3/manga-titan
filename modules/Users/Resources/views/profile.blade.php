@@ -5,15 +5,7 @@
 @endsection
 
 @section('content')
-<div class="four wide column">
-	<div class="ui fluid vertical menu">
-		<a href="" class="item"><i class="icon user"></i> Bacic Info</a>
-		<a href="" class="item"><i class="icon lock"></i> Security</a>
-		<a href="" class="item"><i class="icon book"></i> My Manga</a>
-		<a href="" class="item"><i class="icon payment"></i> Payment</a>
-		<a href="" class="item"><i class="icon info circle"></i> Notification</a>
-	</div>
-</div>
+@include('users::leftmenu')
 <div class="twelve wide column">
 	<div class="ui green segment">
 		<h3 class="ui header dividing">Profile</h3>
@@ -307,7 +299,7 @@
 		<form class="ui form">
 			<div class="field">
 				<label></label>
-				<img src="/manga/image/thumb/dummy.png" class="ui medium image" alt="">
+				<img src="/manga/image/thumb/dummy.png" class="ui small image" alt="">
 			</div>
 			<div class="field">
 				<label>Upload Photo</label>

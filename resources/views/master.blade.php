@@ -51,6 +51,8 @@
 				$('.ui.progress').progress();
 			});
 		</script>
+		@section('pageFooter')
 		@include('footer');
+		@show
 	</body>
 </html>
