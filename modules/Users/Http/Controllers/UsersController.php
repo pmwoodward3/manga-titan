@@ -89,5 +89,9 @@ class UsersController extends Controller {
 
 		return redirect()->route('user.changepass')->with('message', 'Success change your password. Please logout and login with new password.');
 	}
+
+	public function profile() {
+		return view('users::profile');
+	}
 	
 }

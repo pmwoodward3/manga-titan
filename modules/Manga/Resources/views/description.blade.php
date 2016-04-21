@@ -20,9 +20,9 @@
 			<vue-desc-content slot="right" :maps="[
 				{label:'Title', key:'title', type:'text'},
 				{label:'Synopsis', key:'description', type:'text'},
-				{label:'Artist', key: 'artist', type:'link', format:'{{$artisturl}}', class:['ui','tag','label','yellow']},
-				{label:'Category', key:'category', type:'link', format:'{{$categoryurl}}'},
+				{label:'Artist', key: 'artist', type:'link', format:'{{$artisturl}}', class:['ui','basic','label']},
 				{label:'Tags', key:'tags', type:'link', format:'{{$tagsurl}}', class:['ui','tag','label','green']},
+				{label:'Category', key:'category', type:'link', format:'{{$categoryurl}}'},
 				{label:'Rating', key:'rating', type:'rating'},
 				{label:'Views', key:'views', type:'number', pluralize:'View'},
 				{label:'Uploaded at', key:'created_at', type:'text'},

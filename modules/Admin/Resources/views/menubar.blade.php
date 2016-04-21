@@ -12,7 +12,7 @@
 				<div class="menu">
 					<a href="{{ route('manga.home') }}" class="item">Back to Manga</a>
 					<div class="divider"></div>
-					<a href="{{ route('user.profile') }}" class="item">Profile</a>
+					<a href="{{ route('user.profile') }}" class="item">My Profile</a>
 					<a href="{{ route('user.changepass') }}" class="item">Change Password</a>
 					<a href="{{ route('user.logout') }}" class="item">Log Out</a>
 				</div>
