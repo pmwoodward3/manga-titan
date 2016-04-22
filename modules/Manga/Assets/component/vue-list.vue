@@ -71,7 +71,7 @@
 
 <template>
 <div class="sixteen wide column">
-	<div class="ui message warning" v-if="data_list.length ==0 " style="margin:1em 0">
+	<div class="ui message warning" style="display:block;" v-if="data_list.length == 0 " style="margin:1em 0">
 		Nothing data to show
 	</div>
 

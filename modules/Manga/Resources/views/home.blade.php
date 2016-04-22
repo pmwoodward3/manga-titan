@@ -9,15 +9,17 @@
 @section('content')
 	<div class="twelve wide column">
 		<vue-form id="aasf" :form-action="{get:'get-manga'}">
-			<vue-filter></vue-filter>
-			<vue-list
-			list-type="grid"
-			:maps="{title: 'title',image: 'thumb'}"
-			:with-extra = "true"
-			:with-link = "true"
-			link-format="{{$routeurl}}"
-			></vue-list>
-			<vue-pagination></vue-pagination>
+			<div class="ui stackable grid manga-grid">
+				<vue-filter></vue-filter>
+				<vue-list
+				list-type="grid"
+				:maps="{title: 'title',image: 'thumb'}"
+				:with-extra = "true"
+				:with-link = "true"
+				link-format="{{$routeurl}}"
+				></vue-list>
+				<vue-pagination></vue-pagination>
+			</div>
 		</vue-form>
 	</div>
 	<div class="four wide column">

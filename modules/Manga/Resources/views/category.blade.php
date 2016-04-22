@@ -7,7 +7,7 @@
 @section('content')
 <div class="sixteen wide column">
 	<h3 class="ui header dividing">Category</h3>
-	<vue-form id="category"
+	<vue-form name="category"
 	:form-action="{get: 'get-home-category'}">
 		<vue-list
 		primary-id="value"

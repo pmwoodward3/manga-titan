@@ -9,7 +9,7 @@
 </style>
 
 <template>
-	<form :id="id_form" :name="id_form" class="ui form" v-show="!isHidden" transition="expand" method="post" v-on:submit.prevent="submit">
+	<form :id="id_form" :name="id_form" class="ui form" v-show="!isHidden" transition="expand" v-on:submit.prevent="submit">
 		<slot></slot>
 		<input type="hidden" :name="item.name" :value="item.value" v-for="item in additionalParam">
 	</form>
@@ -23,6 +23,7 @@
 			formTargetEdit: { required: false, type:String, default:null },
 			formAction: { required: false, type:Object, default:function () {return {};} },		//get, delete, save
 			hideOnSave: { required: false, type:Boolean, default: true },
+			resetOnSave: { required: false, type:Boolean, default: false },
 			isHidden: { required: false, type:Boolean },
 			optionalParam: { required:false, type:Object, default:function () {return {};} }
 		},
@@ -87,6 +88,7 @@
 						var notify = {title: 'Save Success', text: data.message};
 						this.$dispatch('form-refresh');
 						this.$dispatch('app-notify', notify);
+						if (this.resetOnSave) this.$emit('form-reset');
 						if (this.hideOnSave) this.$emit('form-cancel');
 					} else {
 						var notify = {title: 'Save Failed', text: data.message, type:'error'};
@@ -101,7 +103,9 @@
 				}
 			},
 			////////////////////////////////////////////////////////////////////////////
-			'form-add': function () {
+			'form-reset': function () {
+				$('#' + this.id_form)[0].reset();
+			},			'form-add': function () {
 				this.$dispatch('form-new', this.formTargetAdd);
 			},
 			'form-refresh': function () {
@@ -212,5 +216,5 @@
 		ready: function () {
 			this.$emit('form-refresh');
 		}
-	}
+	};
 </script>

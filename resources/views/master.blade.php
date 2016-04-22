@@ -52,7 +52,7 @@
 			});
 		</script>
 		@section('pageFooter')
-		@include('footer');
+		@include('footer')
 		@show
 	</body>
 </html>
