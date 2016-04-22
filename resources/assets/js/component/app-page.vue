@@ -1,5 +1,5 @@
 <template>
-	<div class="ui grid" id="admin-grid">
+	<div class="ui grid" :class="class" :id="id">
 		<slot></slot>
 	</div>
 </template>
@@ -7,7 +7,9 @@
 <script>
 	module.exports = {
 		props:{
-			urlAjax: {required: true, type:String}
+			urlAjax: {required: true, type:String},
+			class: {required:false, type:Array, default:function () {return [];}},
+			id: {required:false, type:String, default:null}
 		},
 		data: function () {
 			return {};
