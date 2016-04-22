@@ -98,5 +98,13 @@ class UsersController extends Controller {
 	public function manga() {
 		return view('users::manga');
 	}
+
+	public function payment() {
+		return view('users::payment');
+	}
+
+	public function notify() {
+		return view('users::notify');
+	}
 	
 }

@@ -16,7 +16,10 @@
 
 @section('pageContent')
 <div class="ui container grid">
-	@yield('content')
+	@include('users::leftmenu')
+	<div class="twelve wide column">
+		@yield('content')
+	</div>
 </div>
 @endsection
 
