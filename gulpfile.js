@@ -13,6 +13,7 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
 	mix.browserify(['main.js','./modules/Manga/Assets/main.js'], "public/modules/manga/js/main.js");
 	mix.browserify(['main.js','./modules/Admin/Assets/main.js'], "public/modules/admin/js/main.js");
+	mix.browserify(['main.js','./modules/Users/Assets/main.js'], "public/modules/users/js/main.js");
 	mix.browserify('lazyload.js','public/js/lazyload.js');
     mix.less('app.less');
 });
