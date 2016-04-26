@@ -1,0 +1,35 @@
+<template>
+	<div class="field">
+		<label>{{label}}</label>
+		<input :type="type" v-model="value" :readonly="isReadonly" :name="name" :value="defaultValue" :placeholder="placeholder">
+	</div>
+</template>
+
+<script>
+	module.exports = {
+		props: {
+			label:			{ required: false, type: String, default: null },
+			name:			{ required: true, type: String },
+			defaultValue:	{ required: false, type: String, default: null },
+			type:			{ required: false, type: String, default: 'text' },
+			isReadonly:		{ required: false, type: Boolean, default: false },
+			placeholder:	{ required: false, type: String, default: null }
+		},
+		data: function() {
+			return {
+				value: null
+			};
+		},
+		events: {
+			'flash-field': function (data) {
+				//
+			},
+			'clear-field': function () {
+				//
+			}
+		},
+		ready: function () {
+			this.value = this.defaultValue;
+		}
+	}
+</script>

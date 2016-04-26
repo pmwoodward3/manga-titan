@@ -6,3 +6,10 @@ Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 
 Vue.component('app-page',			require('./component/app-page.vue'));
 Vue.component('vue-form',			require('./component/vue-form.vue'));
+Vue.component('vue-table',			require('./component/vue-table.vue'));
+Vue.component('vue-input',			require('./component/vue-input.vue'));
+Vue.component('vue-select',			require('./component/vue-select.vue'));
+Vue.component('vue-textarea',		require('./component/vue-textarea.vue'));
+Vue.component('vue-checkbox',		require('./component/vue-checkbox.vue'));
+Vue.component('vue-radio',			require('./component/vue-radio.vue'));
+Vue.component('vue-new-form',		require('./component/vue.new-form.vue'));

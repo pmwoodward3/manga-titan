@@ -105,7 +105,8 @@
 			////////////////////////////////////////////////////////////////////////////
 			'form-reset': function () {
 				$('#' + this.id_form)[0].reset();
-			},			'form-add': function () {
+			},
+			'form-add': function () {
 				this.$dispatch('form-new', this.formTargetAdd);
 			},
 			'form-refresh': function () {
