@@ -103,6 +103,7 @@ class MigrationCartalystSentinel extends Migration
             $table->string('about')->nullable();
             $table->string('locale', 2)->nullable();
             $table->timestamp('date_of_birth')->nullable();
+            $table->boolean('is_public')->default(false);
             $table->timestamps();
 
             $table->engine = 'InnoDB';

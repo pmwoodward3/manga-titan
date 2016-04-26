@@ -15,12 +15,12 @@
 @endsection
 
 @section('pageContent')
-<div class="ui container grid">
+<app-page url-ajax="{{ route('core.ajax') }}" :class="['container']">
 	@include('users::leftmenu')
 	<div class="twelve wide column">
 		@yield('content')
 	</div>
-</div>
+</app-page>
 @endsection
 
 @section('pageMenubar')

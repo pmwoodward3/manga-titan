@@ -36,12 +36,10 @@
 	<div class="column">
 		<div class="ui blue segment">
 			<h3 class="ui header dividing">E-Mail</h3>
-			<vue-new-form name="email">
-				<vue-input name="field" default-value="field" label="Current Email" :is-readonly="true"></vue-input>
-				<div class="ui small buttons">
-					<button type="button" class="ui button blue">Change Email</button>
-					<button type="button" class="ui button red">Don't Publish Email</button>
-				</div>
+			<vue-new-form name="email" action-save="change-email">
+				<vue-input name="email" default-value="{{ Sentinel::getUser()->email }}" label="Current Email"></vue-input>
+				<vue-checkbox name="publish" label="Publish Email"></vue-checkbox>
+				<button type="submit" class="ui button small blue">Change Email</button>
 			</vue-new-form>
 		</div>
 	</div>

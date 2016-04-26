@@ -54,7 +54,18 @@
 		},
 		methods: {
 			getFormValues: function () {
-				//
+				var submitdata = $(this.selector).serializeArray();
+				var objectsubmit = {};
+				$.each(submitdata, function (index, item) {
+					if (item.name.endsWith("[]") && ! (item.name.replace('[]','') in objectsubmit))
+						objectsubmit[item.name.replace('[]','')] = [];
+					if (item.name.endsWith("[]")) 
+						objectsubmit[item.name.replace('[]','')].push(item.value);
+					else 
+						objectsubmit[item.name] = item.value;
+				});
+
+				return objectsubmit;
 			},
 			submit: function (event) {
 				if (this.preventSubmit) event.preventDefault();
@@ -62,7 +73,7 @@
 			}
 		},
 		events: {
-			'form-save-callback': function () {
+			'form-submit-callback': function (data, name) {
 				//
 			},
 			'form-delete-callback': function () {
@@ -75,8 +86,21 @@
 			'form-refresh': function () {
 				//
 			},
-			'form-submit': function (event) {
-				//
+			'form-submit': function (newparam, name) {
+				if (this.actionSave == null) return;
+
+				var objectsubmit = this.getFormValues();
+				if (typeof name != 'undefined' && typeof newparam != 'undefined' && this.name == name)
+					objectsubmit = $.extend({},objectsubmit, newparam);
+
+				var data = {
+					data: objectsubmit,
+					client_action: this.actionSave,
+					callback: 'form-submit-callback',
+					name: this.name
+				};
+
+				this.$dispatch('ajax-action', data);
 			},
 			'form-reset': function () {
 				//
