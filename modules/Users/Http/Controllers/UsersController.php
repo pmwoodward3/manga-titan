@@ -88,7 +88,7 @@ class UsersController extends Controller {
 
 		Sentinel::update($user, ['password' => $new_pass]);
 
-		return redirect()->route('user.changepass')->with('message', 'Success change your password. Please logout and login with new password.');
+		return redirect()->route('user.security')->with('message', 'Success change your password. Please logout and login with new password.');
 	}
 
 	public function profile() {

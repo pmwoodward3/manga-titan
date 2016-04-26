@@ -28,5 +28,5 @@
 @endsection
 
 @section('pageFooter')
-@parent
+
 @endsection
