@@ -73,8 +73,17 @@
 			}
 		},
 		events: {
-			'form-submit-callback': function (data, name) {
-				//
+			'form-submit-callback': function (data) {
+				if (data.success) {
+					var notify = {title: 'Save Success', text: data.message};
+					this.$dispatch('app-notify', notify);
+					this.$dispatch('form-refresh');
+					if (this.resetOnSave) this.$emit('form-reset');
+					if (this.hideOnSave) this.$emit('form-hide');
+				} else {
+					var notify = {title: 'Save Failed', text: data.message, type:'error'};
+					this.$dispatch('app-notify', notify);
+				}
 			},
 			'form-delete-callback': function () {
 				//
@@ -89,6 +98,7 @@
 			'form-submit': function (newparam, name) {
 				if (this.actionSave == null) return;
 
+				var that = this;
 				var objectsubmit = this.getFormValues();
 				if (typeof name != 'undefined' && typeof newparam != 'undefined' && this.name == name)
 					objectsubmit = $.extend({},objectsubmit, newparam);
@@ -96,8 +106,10 @@
 				var data = {
 					data: objectsubmit,
 					client_action: this.actionSave,
-					callback: 'form-submit-callback',
-					name: this.name
+					onsuccess: function (data) {
+						that.$emit('form-submit-callback', data);
+					},
+					onerror: function (faildata) {}
 				};
 
 				this.$dispatch('ajax-action', data);
@@ -106,10 +118,10 @@
 				//
 			},
 			'form-show': function () {
-				//
+				this.isHidden = false;
 			},
 			'form-hide': function () {
-				//
+				this.isHidden = true;
 			},
 			/////////////////////////////////
 			'form-new': function () {

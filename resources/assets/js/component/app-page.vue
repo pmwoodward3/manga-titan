@@ -59,12 +59,17 @@
 			},
 			appAjax: function (data) {
 				var that = this;
-				this.$http.post(this.urlAjax, data, {emulateJSON:true,timeout: 15000}).then(function (response) {
+				var param = {
+					data: data.data,
+					client_action: data.client_action
+				};
+
+				this.$http.post(this.urlAjax, param, {emulateJSON:true,timeout: 15000}).then(function (response) {
 					var resdata = $.extend(response.data);
 
 					Vue.http.headers.common['X-CSRF-TOKEN'] = resdata.new_csrf;
 
-					that.$broadcast(data.callback, resdata, data.name);
+					data.onsuccess && data.onsuccess(resdata);
 				}, function(failresponse) {
 					swal({
 						title:failresponse.status,
@@ -72,6 +77,7 @@
 						type: 'error',
 						showConfirmButton:true
 					});
+					data.onerror && data.onerror(failresponse);
 				});
 			}
 		},
