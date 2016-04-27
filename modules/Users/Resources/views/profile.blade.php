@@ -9,29 +9,28 @@
 	<h3 class="ui header dividing">Profile</h3>
 	<div class="ui grid">
 		<div class="four wide column">
-			<form class="ui form">
+			<vue-new-form name="photo" :hide-on-save="false">
 				<div class="field">
 					<label></label>
-					<img src="/manga/image/thumb/dummy.png" class="ui small image" alt="">
+					<vue-image :class="['small']" src="/manga/image/thumb/dummy.png"></vue-image>
 				</div>
-				<div class="field">
-					<label>Upload Photo</label>
-					<button class="ui labeled icon button"><i class="icon upload"></i> Upload</button>
-				</div>
-			</form>
+				<vue-upload name="newphoto" label="Upload Photo"></vue-upload>
+			</vue-new-form>
 		</div>
 		<div class="twelve wide column">
-			<form action="post" class="ui form">
+			<vue-new-form name="profile">
 				<div class="two fields">
-					<div class="field">
-						<label>First Name</label>
-						<input type="text">
-					</div>
-					<div class="field">
-						<label>Last Name</label>
-						<input type="text">
-					</div>
+					<vue-input name="f_name" label="First Name"></vue-input>
+					<vue-input name="l_name" label="Last Name"></vue-input>
 				</div>
+				<div class="fields">
+					<vue-select :class="['seven', 'wide']" label="Country" name="country" :allow-add="true" :values="[
+						{text:'Afghanistan', value:'af'},
+						{text:'Aland Islands', value:'ax'}
+					]"></vue-select>
+				</div>
+			</vue-new-form>
+			<form action="post" class="ui form">
 				<div class="fields">
 					<div class="seven wide field">
 						<label>Country</label>

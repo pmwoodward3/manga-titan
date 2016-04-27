@@ -41,6 +41,7 @@ class CoreController extends Controller {
 			'get-user'			=> __NAMESPACE__.'\UserController::getData',
 			'save-user'			=> __NAMESPACE__.'\UserController::saveData',
 			'delete-user'		=> __NAMESPACE__.'\UserController::deleteData',
+			'change-email'		=> __NAMESPACE__.'\UserController::changeEmail',
 
 			'get-comment'		=> __NAMESPACE__.'\CommentController::getData',
 			'delete-comment'	=> __NAMESPACE__.'\CommentController::deleteData',

@@ -1,4 +1,5 @@
 @extends('users::master')
+@set('user', Sentinel::getUser())
 
 @section('title')
 @parent - Security
@@ -36,9 +37,9 @@
 	<div class="column">
 		<div class="ui blue segment">
 			<h3 class="ui header dividing">E-Mail</h3>
-			<vue-new-form name="email" action-save="change-email">
-				<vue-input name="email" default-value="{{ Sentinel::getUser()->email }}" label="Current Email"></vue-input>
-				<vue-checkbox name="publish" label="Publish Email"></vue-checkbox>
+			<vue-new-form name="email" action-save="change-email" :hide-on-save="false">
+				<vue-input name="email" default-value="{{ $user->email }}" label="Current Email"></vue-input>
+				<vue-checkbox name="publish" label="Publish Email" :default-value="{{$user->is_public?'true':'false'}}"></vue-checkbox>
 				<button type="submit" class="ui button small blue">Change Email</button>
 			</vue-new-form>
 		</div>

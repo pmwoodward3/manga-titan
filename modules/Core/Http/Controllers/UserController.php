@@ -83,5 +83,27 @@ class UserController extends Controller implements AjaxResponse {
 	public static function detailData($data) {
 		//
 	}
+
+	public static function changeEmail($data) {
+		$result = ['message' => '', 'success' => false];
+		$publish = array_key_exists('publish', $data);
+
+		try {
+			$user = Users::findOrFail(Sentinel::getUser()->id);
+
+			$user->email = $data['email'];
+			$user->is_public = $publish;
+			$user->save();
+
+			$result['success'] = true;
+			$result['data'] = Sentinel::getUser();
+			$result['message'] = 'Success Update Email';
+		} catch (ModelNotFoundException $e) {
+			$result['message'] = $e->getMessage();
+			$result['success'] = false;
+		}
+
+		return $result;
+	}
 	
 }

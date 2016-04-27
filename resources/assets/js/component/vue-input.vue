@@ -1,5 +1,5 @@
 <template>
-	<div class="field">
+	<div class="field" :class="class">
 		<label>{{label}}</label>
 		<input :type="type" v-model="value" :readonly="isReadonly" :name="name" :value="defaultValue" :placeholder="placeholder">
 	</div>
@@ -10,6 +10,7 @@
 		props: {
 			label:			{ required: false, type: String, default: null },
 			name:			{ required: true, type: String },
+			class:			{ required: false, type: Array, default: function () {return [];} },
 			defaultValue:	{ required: false, type: String, default: null },
 			type:			{ required: false, type: String, default: 'text' },
 			isReadonly:		{ required: false, type: Boolean, default: false },
