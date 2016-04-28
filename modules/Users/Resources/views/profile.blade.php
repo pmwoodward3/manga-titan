@@ -11,8 +11,8 @@
 		<div class="four wide column">
 			<vue-new-form name="photo" :hide-on-save="false">
 				<div class="field">
-					<label></label>
-					<vue-image :class="['small']" src="/manga/image/thumb/dummy.png"></vue-image>
+					<label>Current Photo</label>
+					<vue-image src="/manga/image/thumb/dummy.png"></vue-image>
 				</div>
 				<vue-upload name="newphoto" label="Upload Photo"></vue-upload>
 			</vue-new-form>

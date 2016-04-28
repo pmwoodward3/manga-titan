@@ -15,3 +15,4 @@ Vue.component('vue-radio',			require('./component/vue-radio.vue'));
 Vue.component('vue-new-form',		require('./component/vue.new-form.vue'));
 Vue.component('vue-upload',			require('./component/vue-upload.vue'));
 Vue.component('vue-image',			require('./component/vue-image.vue'));
+Vue.component('vue-progress',		require('./component/vue-progress.vue'));
