@@ -27,6 +27,8 @@ class CoreController extends Controller {
 	public function registerAction() {
 		$this->defresponse = ['message' => 'Undefined user action', 'success' => false, 'new_csrf' => csrf_token()];
 		$this->actions = [
+			'get-country'		=> __NAMESPACE__.'\GeneralController::getCountry',
+			
 			'get-category'		=> __NAMESPACE__.'\CategoryController::getData',
 			'save-category'		=> __NAMESPACE__.'\CategoryController::saveData',
 			'delete-category'	=> __NAMESPACE__.'\CategoryController::deleteData',

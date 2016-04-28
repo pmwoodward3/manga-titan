@@ -1,7 +1,7 @@
 <template>
 	<div class="field">
 		<label>{{label}}</label>
-		<button class="ui labeled icon button"><i class="icon upload"></i> Upload</button>
+		<button class="ui labeled small icon button"><i class="icon upload"></i> Upload</button>
 	</div>
 </template>
 

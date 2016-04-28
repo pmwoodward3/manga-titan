@@ -1,6 +1,6 @@
 <template>
 	<div class="field" :class="class">
-		<label>{{label}}</label>
+		<label v-if="label != null">{{label}}</label>
 		<input :type="type" v-model="value" :readonly="isReadonly" :name="name" :value="defaultValue" :placeholder="placeholder">
 	</div>
 </template>

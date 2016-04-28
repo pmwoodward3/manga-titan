@@ -1,6 +1,6 @@
 <template>
 	<div class="field">
-		<label>{{label}</label>
+		<label v-if="label != null">{{label}}</label>
 		<textarea :name="name" v-model="value" :readonly="isReadonly" rows="2">{{defaultValue}}</textarea>
 	</div>
 </template>
