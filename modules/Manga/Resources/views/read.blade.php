@@ -8,7 +8,7 @@
 <div class="sixteen wide column">
 	<manga-read :manga-id="{{ $id_manga }}">
 		<vue-navigator :page="{{ $page }}"></vue-navigator>
-		<vue-image></vue-image>
+		<vue-manga-page></vue-manga-page>
 	</manga-read>
 	<div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>
