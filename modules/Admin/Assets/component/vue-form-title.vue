@@ -23,24 +23,24 @@
 			buttonSave: { required:false, type:Boolean, default: false },
 			buttonRefresh: { required:false, type:Boolean, default: false },
 			buttonCancel: { required:false, type:Boolean, default: false },
-			title: { required: true, type:String},
+			title: { required: true, type:String },
 			icon: { required: false, type:String, default: null }
 		},
 		methods: {
 			addClick: function () {
-				this.$dispatch('form-add');
+				this.$dispatch('form-new');
 			},
 			deleteClick: function () {
 				this.$dispatch('form-delete');
 			},
 			saveClick: function () {
-				this.$dispatch('form-save');
+				this.$dispatch('form-submit');
 			},
 			refreshClick: function () {
 				this.$dispatch('form-refresh');
 			},
 			cancelClick: function () {
-				this.$dispatch('form-cancel');
+				this.$dispatch('form-hide');
 			}
 		}
 	}

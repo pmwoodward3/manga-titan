@@ -23,10 +23,11 @@
 		},
 		events: {
 			'flash-field': function (data) {
-				//
+				if (this.name in data)
+					this.value = data[this.name];
 			},
 			'clear-field': function () {
-				//
+				this.value = null;
 			}
 		},
 		ready: function () {

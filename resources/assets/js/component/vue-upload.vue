@@ -153,10 +153,24 @@
 		},
 		events: {
 			'flash-field': function (data) {
-				//
+				if (this.name in data) {
+					if (this.multiple) {
+						this.valueArr = [];
+						if (typeof data[this.name] == 'Array') {
+							$.each(data[this.name], function (index, item) {
+								that.valueArr.push(item);
+							});
+						} else {
+							this.valueArr.push(data[this.name]);
+						}
+					} else {
+						this.value = data[this.name];
+					}
+				}
 			},
 			'clear-field': function () {
-				//
+				this.value = null;
+				this.valueArr = [];
 			}
 		},
 		ready: function () {

@@ -1,7 +1,7 @@
 <template>
 	<div class="field" :class="class">
 		<label v-if="label != null">{{ label }}</label>
-		<select class="ui dropdown fluid search" :class="myClass" :id="dropdown">
+		<select class="ui dropdown fluid search" :multiple="multiple" :class="myClass" :id="id" :name="newname">
 			<option value="">{{ placeholder }}</option>
 			<option v-for="item in options" :value="item.value" v-text="item.text"></option>
 		</select>
@@ -15,6 +15,7 @@
 			label:			{ required: false, type: String, default: null },
 			class:			{ required: false, type: Array, default: function () {return [];} },
 			values:			{ required: false, type: Array, default: function () {return [];} },
+			multiple:		{ required: false, type: Boolean, default: false },
 			allowAdd: 		{ required: false, type: Boolean, default: false },
 			valueSource:	{ required: false, type: String, default: null },
 			placeholder:	{ required: false, type: String, default: null }
@@ -25,6 +26,15 @@
 			},
 			myClass: function () {
 				return [this.name + '-dropdown'];
+			},
+			id: function () {
+				return this.name + '-dropdown';
+			},
+			newname: function () {
+				if (this.multiple)
+					return this.name + '[]';
+				else
+					return this.name;
 			}
 		},
 		data: function () {
@@ -34,10 +44,11 @@
 		},
 		events: {
 			'flash-field': function (data) {
-				//
+				if (this.name in data)
+					$(this.selector).dropdown('set exactly', data[this.name]).dropdown('refresh');
 			},
 			'clear-field': function () {
-				//
+				$(this.selector).dropdown('clear');
 			},
 			'generate-dropdown': function () {
 				var that = this;

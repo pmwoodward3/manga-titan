@@ -39,7 +39,7 @@
 			}
 		},
 		events: {
-			'change-page': function (data) {
+			'update-page': function (data) {
 				if (typeof data.page_num != 'undefined' && typeof data.max_page != 'undefined') {
 					this.max_page = data.max_page;
 					this.page_num = data.page_num;

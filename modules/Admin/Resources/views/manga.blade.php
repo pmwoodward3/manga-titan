@@ -11,9 +11,10 @@
 	<div class="nine wide column form-admin" id="admin-side-left">
 		<vue-form
 		name="manga-list"
-		form-target-add="manga-form"
-		form-target-edit="manga-form"
-		:form-action="{get:'get-manga', delete: 'delete-manga'}"
+		target-add="manga-form"
+		target-edit="manga-form"
+		action-refresh="get-manga"
+		action-delete="delete-manga"
 		>
 			<vue-form-title
 			title="Manga List"
@@ -40,8 +41,8 @@
 	<div class="seven wide column form-admin" id="admin-side-right">
 		<vue-form
 		name="manga-form"
-		:form-action="{save:'save-manga'}"
-		:is-hidden="true"
+		action-save="save-manga"
+		:hidden="true"
 		>
 			<vue-form-title
 			title="Manga Form"
@@ -50,39 +51,14 @@
 			:button-cancel="true"
 			></vue-form-title>
 			<vue-form-fields>
-				<vue-form-field name="id" type="hidden"></vue-form-field>
+				<vue-input name="id" type="hidden"></vue-input>
+				<vue-input name="title" label="Manga Title" placeholder="Manga Title"></vue-input>
 
-				<vue-form-field
-				name="title"
-				label="Manga Title"
-				placeholder="Manga Title"
-				type="text"></vue-form-field>
-
-				<vue-form-field
-				name="description"
-				label="Description"
-				placeholder="Description"
-				type="textarea"></vue-form-field>
-
-				<vue-input-select
-				name="category"
-				label="Category"
-				:allow-add-value = "true"
-				:source-data="{url:'{{route('core.ajax')}}', client_action: 'source-category'}"></vue-input-select>
-
-				<vue-input-select
-				name="tags"
-				label="Tags"
-				:multiple="true"
-				:allow-add-value = "true"
-				:source-data="{url:'{{route('core.ajax')}}', client_action: 'source-tags'}"></vue-input-select>
-
-				<vue-file-upload
-				label="Manga Thumbnail"
-				type="image"
-				name="thumb"
-				:show-image = "true"
-				></vue-file-upload>
+				<vue-textarea name="description" label="Description" placeholder="Description"></vue-textarea>
+				<vue-select name="category" label="Category" value-source="source-category" :allow-add="true" placeholder="Select Category"></vue-select>
+				<vue-select name="tags" label="Tags" value-source="source-tags" :multiple="true" :allow-add="true" placeholder="Select Tags"></vue-select>
+				
+				<vue-upload name="thumb" label="Manga Thumbnail" :show-preview="true"></vue-upload>
 			</vue-form-fields>
 		</vue-form>
 		@include('admin::empty')

@@ -152,6 +152,7 @@
 			},
 			/////////////////////////////////
 			'form-new': function (name) {
+				if (typeof name == 'undefined' && this.targetAdd != null) this.$dispatch('form-new', this.targetAdd);
 				if (this.name == name) {
 					this.$emit('form-reset');
 					this.$emit('form-show');
@@ -168,6 +169,29 @@
 			'form-close': function (name) {
 				if (this.name == name)
 					this.$emit('form-hide');
+			},
+			'form-delete': function () {
+				if (this.actionDelete == null) return;
+
+				var that = this;
+				var objectsubmit = this.getFormValues();
+				var confirm = {
+					title: 'Delete data',
+					text: 'Are you sure to delete this data?',
+					onconfirm: function (newvalue) {
+						var param = {
+							data: objectsubmit,
+							client_action:that.actionDelete,
+							onsuccess: function (dataret) {
+								that.$emit('form-delete-callback', dataret);
+							},
+							onerror: function (fail) {}
+						};
+
+						that.$dispatch('ajax-action', param);
+					}
+				}
+				this.$dispatch('app-confirm', confirm);
 			},
 			////////////////////////////////////
 			'row-detail': function (data) {
@@ -196,7 +220,7 @@
 						};
 
 						that.$dispatch('ajax-action', param);
-					}					
+					}
 				};
 
 				this.$dispatch('app-confirm', confirm);
