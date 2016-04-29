@@ -12,7 +12,6 @@ Vue.component('vue-select',			require('./component/vue-select.vue'));
 Vue.component('vue-textarea',		require('./component/vue-textarea.vue'));
 Vue.component('vue-checkbox',		require('./component/vue-checkbox.vue'));
 Vue.component('vue-radio',			require('./component/vue-radio.vue'));
-Vue.component('vue-new-form',		require('./component/vue.new-form.vue'));
 Vue.component('vue-upload',			require('./component/vue-upload.vue'));
 Vue.component('vue-image',			require('./component/vue-image.vue'));
 Vue.component('vue-progress',		require('./component/vue-progress.vue'));

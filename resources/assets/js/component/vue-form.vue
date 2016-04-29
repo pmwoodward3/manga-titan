@@ -9,51 +9,53 @@
 </style>
 
 <template>
-	<form :id="id_form" :name="id_form" class="ui form" v-show="!isHidden" transition="expand" v-on:submit.prevent="submit">
+	<form
+	:id="id"
+	v-show="!isHidden"
+	transition="expand"
+	class="ui form"
+	v-on:submit="submit"
+	method="post"
+	:action="action"
+	>
 		<slot></slot>
-		<input type="hidden" :name="item.name" :value="item.value" v-for="item in additionalParam">
+		<input type="hidden" :name="item.name" :value="item.value" v-for="item in params">
 	</form>
 </template>
 
 <script>
 	module.exports = {
 		props: {
-			name: { required: true, type:String },
-			formTargetAdd: { required: false, type:String, default:null },
-			formTargetEdit: { required: false, type:String, default:null },
-			formAction: { required: false, type:Object, default:function () {return {};} },		//get, delete, save
-			hideOnSave: { required: false, type:Boolean, default: true },
-			resetOnSave: { required: false, type:Boolean, default: false },
-			isHidden: { required: false, type:Boolean },
-			optionalParam: { required:false, type:Object, default:function () {return {};} }
-		},
-		data: function () {
-			return {};
+			name: 			{ required: true, type: String },
+			action: 		{ required: false, type: String, default: null },
+			params:			{ required: false, type: Array, default: function () {return [];} },
+			hidden:			{ required: false, type: Boolean, default: false },
+			resetOnSave:	{ required: false, type: Boolean, default: false },
+			hideOnSave:		{ required: false, type: Boolean, default: true },
+			preventSubmit:	{ required: false, type: Boolean, default: true },
+			actionRefresh:	{ required: false, type: String, default: null },
+			actionSave:		{ required: false, type: String, default: null },
+			actionDelete:	{ required: false, type: String, default: null },
+			targetAdd:		{ required: false, type: String, default: null },
+			targetEdit:		{ required: false, type: String, default: null }
 		},
 		computed: {
-			id_form: function () {
-				return 'form-' + this.name;
+			selector: function () {
+				return '#' + this.id;
 			},
-			additionalParam: function () {
-				var param = [];
-				$.each(this.optionalParam, function (key, item) {
-					if (typeof item == 'Array') {
-						$.each(item, function (index, value) {
-							param.push({name:key + '[]', value:value});
-						});
-					} else {
-						param.push({name:key, value:item});
-					}
-				});
-				return param;
+			id: function () {
+				return this.name + '-form';
+			}
+		},
+		data: function () {
+			return {
+				isHidden: false,
+				isDetail: false
 			}
 		},
 		methods: {
-			submit: function () {
-				this.$emit('form-save', {}, this.name);
-			},
 			getFormValues: function () {
-				var submitdata = $('#' + this.id_form).serializeArray();
+				var submitdata = $(this.selector).serializeArray();
 				var objectsubmit = {};
 				$.each(submitdata, function (index, item) {
 					if (item.name.endsWith("[]") && ! (item.name.replace('[]','') in objectsubmit))
@@ -65,126 +67,120 @@
 				});
 
 				return objectsubmit;
+			},
+			submit: function (event) {
+				if (this.preventSubmit) event.preventDefault();
+				this.$emit('form-submit');
 			}
 		},
 		events: {
-			'form-delete-callback': function (data, name) {
-				if (this.name == name) {
-					if (data.success) {
-						var notify = {title: 'Save Success', text: data.message};
-						this.$dispatch('form-refresh');
-						this.$dispatch('form-close', this.formTargetAdd);
-						this.$dispatch('form-close', this.formTargetEdit);
-						this.$dispatch('app-notify', notify);
-					} else {
-						var notify = {title: 'Delete Failed', text: data.message, type:'error'};
-						this.$dispatch('app-notify', notify);
-					}
+			'form-submit-callback': function (data) {
+				if (data.success) {
+					var notify = {title: 'Save Success', text: data.message};
+					this.$dispatch('app-notify', notify);
+					this.$dispatch('form-refresh');
+					if (this.resetOnSave) this.$emit('form-reset');
+					if (this.hideOnSave) this.$emit('form-hide');
+				} else {
+					var notify = {title: 'Save Failed', text: data.message, type:'error'};
+					this.$dispatch('app-notify', notify);
 				}
 			},
-			'form-save-callback': function (data, name) {
-				if (this.name == name) {
-					if (data.success && name == this.name) {
-						var notify = {title: 'Save Success', text: data.message};
-						this.$dispatch('form-refresh');
-						this.$dispatch('app-notify', notify);
-						if (this.resetOnSave) this.$emit('form-reset');
-						if (this.hideOnSave) this.$emit('form-cancel');
-					} else {
-						var notify = {title: 'Save Failed', text: data.message, type:'error'};
-						this.$dispatch('app-notify', notify);
-					}
+			'form-delete-callback': function (data) {
+				if (data.success) {
+					var notify = {title: 'Save Success', text: data.message};
+					this.$dispatch('form-refresh');
+					this.$dispatch('form-close', this.formTargetAdd);
+					this.$dispatch('form-close', this.formTargetEdit);
+					this.$dispatch('app-notify', notify);
+				} else {
+					var notify = {title: 'Delete Failed', text: data.message, type:'error'};
+					this.$dispatch('app-notify', notify);
 				}
 			},
-			'form-refresh-callback': function (data, name) {
-				if (data.success && name == this.name) {
-					this.$broadcast('change-page', {page_num:data.data.page_num, max_page:data.data.max_page});
+			'form-refresh-callback': function (data) {
+				if (data.success) {
+					this.$broadcast('update-page', {page_num:data.data.page_num, max_page:data.data.max_page});
 					this.$broadcast('row-flash', data.data.data);
 				}
 			},
-			////////////////////////////////////////////////////////////////////////////
-			'form-reset': function () {
-				$('#' + this.id_form)[0].reset();
-			},
-			'form-add': function () {
-				this.$dispatch('form-new', this.formTargetAdd);
-			},
+			//////////////////////////////////////
 			'form-refresh': function () {
-				if (! ("get" in this.formAction)) return;
-				var param = this.getFormValues();
+				if (this.actionRefresh == null) return;
+
+				var that = this;
+				var objectsubmit = this.getFormValues();
 				var data = {
-					data: param,
-					client_action: this.formAction.get,
-					callback: 'form-refresh-callback',
-					name: this.name
+					data: objectsubmit,
+					client_action: this.actionRefresh,
+					onsuccess: function (data) {
+						that.$emit('form-refresh-callback', data);
+					},
+					onerror: function (faildata) {}
 				};
+
 				this.$dispatch('ajax-action', data);
 			},
-			'form-delete': function () {
-				if (! ("delete" in this.formAction)) return;
-				var objectsubmit = this.getFormValues();
-				var that = this;
-				var confirm = {
-					title: "Delete Selected",
-					text: "Are you sure to delete selected data?",
-					onconfirm: function () {
-						var param = {
-							data: {
-								id: objectsubmit.id
-							},
-							client_action:that.formAction.delete,
-							callback:'form-delete-callback',
-							name: that.name
-						};
-						that.$dispatch('ajax-action', param);
-					}
-				};
-				this.$dispatch('app-confirm', confirm);
-			},
-			'form-cancel': function () {
-				this.isHidden = true;
-			},
-			'form-save': function (newparam, name) {
-				if (! ("save" in this.formAction)) return;
+			'form-submit': function (newparam, name) {
+				if (this.actionSave == null) return;
+				if (this.isDetail) return;
 
+				var that = this;
 				var objectsubmit = this.getFormValues();
 				if (typeof name != 'undefined' && typeof newparam != 'undefined' && this.name == name)
 					objectsubmit = $.extend({},objectsubmit, newparam);
 
 				var data = {
 					data: objectsubmit,
-					client_action: this.formAction.save,
-					callback: 'form-save-callback',
-					name: this.name
+					client_action: this.actionSave,
+					onsuccess: function (data) {
+						that.$emit('form-submit-callback', data);
+					},
+					onerror: function (faildata) {}
 				};
 
 				this.$dispatch('ajax-action', data);
 			},
+			'form-reset': function () {
+				$(this.selector)[0].reset();
+			},
+			'form-show': function () {
+				this.isHidden = false;
+			},
+			'form-hide': function () {
+				this.isHidden = true;
+			},
+			/////////////////////////////////
 			'form-new': function (name) {
 				if (this.name == name) {
+					this.$emit('form-reset');
+					this.$emit('form-show');
 					this.$broadcast('clear-field');
-					this.isHidden = false;
 				}
 			},
-			'form-edit': function (data, name) {
+			'form-edit': function (data, name, isdetail) {
 				if (this.name == name) {
+					this.isDetail = isdetail;
 					this.$broadcast('flash-field', data);
-					this.isHidden = false;
+					this.$emit('form-show');
 				}
 			},
 			'form-close': function (name) {
 				if (this.name == name)
-					this.$emit('form-cancel');
+					this.$emit('form-hide');
 			},
-			'form-detail': function (data, name) {
-				if (this.name == name) {
-					this.$emit('form-refresh');
-					this.isHidden = false;
-				}
+			////////////////////////////////////
+			'row-detail': function (data) {
+				if (this.targetEdit == null) return;
+				this.$dispatch('form-edit', data, this.targetEdit, true);
 			},
-			///////////////////////////////////////////////////////////////////////////////
+			'row-edit': function (data) {
+				if (this.targetEdit == null) return;
+				this.$dispatch('form-edit', data, this.targetEdit, false);
+			},
 			'row-delete': function (data) {
-				if (!("delete" in this.formAction)) return;
+				if (this.actionDelete == null) return;
+
 				var that = this;
 				var confirm = {
 					title: 'Delete data',
@@ -192,30 +188,27 @@
 					onconfirm: function (newvalue) {
 						var param = {
 							data: data,
-							client_action:that.formAction.delete,
-							callback:'form-delete-callback',
-							name: that.name
+							client_action:that.actionDelete,
+							onsuccess: function (dataret) {
+								that.$emit('form-delete-callback', dataret);
+							},
+							onerror: function (fail) {}
 						};
+
 						that.$dispatch('ajax-action', param);
-					}
+					}					
 				};
+
 				this.$dispatch('app-confirm', confirm);
 			},
-			'row-edit': function (data) {
-				if (this.formTargetEdit == null) return;
-				this.$dispatch('form-edit', data, this.formTargetEdit);
-			},
-			'row-detail': function (data) {
-				if (this.formTargetDetail == null) return;
-				this.$dispatch('form-detail', data, this.formTargetDetail);
-			},
-			/////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////
 			'page-changed': function () {
 				this.$emit('form-refresh');
 			}
 		},
 		ready: function () {
+			this.isHidden = this.hidden;
 			this.$emit('form-refresh');
 		}
-	};
+	}
 </script>
