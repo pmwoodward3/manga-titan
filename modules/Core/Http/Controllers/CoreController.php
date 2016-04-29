@@ -28,6 +28,8 @@ class CoreController extends Controller {
 		$this->defresponse = ['message' => 'Undefined user action', 'success' => false, 'new_csrf' => csrf_token()];
 		$this->actions = [
 			'get-country'		=> __NAMESPACE__.'\GeneralController::getCountry',
+			'get-month'			=> __NAMESPACE__.'\GeneralController::getMonth',
+			'get-year'			=> __NAMESPACE__.'\GeneralController::getYear',
 			
 			'get-category'		=> __NAMESPACE__.'\CategoryController::getData',
 			'save-category'		=> __NAMESPACE__.'\CategoryController::saveData',

@@ -258,4 +258,25 @@ class GeneralController extends Controller {
 		return $result;
 	}
 	
+	public static function getMonth() {
+		$result = ['message' => 'Success get month', 'success' => true];
+		$coldata = [];
+		for ($i=1; $i<=12; $i++) {
+			$dateObj   = date_create_from_format('!m', $i);
+
+			$coldata[] = ['text' => $dateObj->format('F'), 'value' => $i];
+		}
+		$result['data'] = $coldata;
+		return $result;
+	}
+
+	public static function getYear() {
+		$result = ['message' => 'Success get year', 'success' => true];
+		$coldata = [];
+		for ($i=1965; $i<=date('Y'); $i++) {
+			$coldata[] = ['text' => $i, 'value' => $i];
+		}
+		$result['data'] = $coldata;
+		return $result;
+	}
 }
