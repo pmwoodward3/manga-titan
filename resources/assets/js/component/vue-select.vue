@@ -1,7 +1,7 @@
 <template>
 	<div class="field" :class="class">
 		<label v-if="label != null">{{ label }}</label>
-		<select class="ui dropdown search" :class="myClass" :id="dropdown">
+		<select class="ui dropdown fluid search" :class="myClass" :id="dropdown">
 			<option value="">{{ placeholder }}</option>
 			<option v-for="item in options" :value="item.value" v-text="item.text"></option>
 		</select>

@@ -49,7 +49,8 @@
 		},
 		data: function () {
 			return {
-				isHidden: false
+				isHidden: false,
+				isDetail: false
 			}
 		},
 		methods: {
@@ -85,18 +86,44 @@
 					this.$dispatch('app-notify', notify);
 				}
 			},
-			'form-delete-callback': function () {
-				//
+			'form-delete-callback': function (data) {
+				if (data.success) {
+					var notify = {title: 'Save Success', text: data.message};
+					this.$dispatch('form-refresh');
+					this.$dispatch('form-close', this.formTargetAdd);
+					this.$dispatch('form-close', this.formTargetEdit);
+					this.$dispatch('app-notify', notify);
+				} else {
+					var notify = {title: 'Delete Failed', text: data.message, type:'error'};
+					this.$dispatch('app-notify', notify);
+				}
 			},
-			'form-refresh-callback': function () {
-				this.$broadcast('row-flash', data);
+			'form-refresh-callback': function (data) {
+				if (data.success) {
+					this.$broadcast('update-page', {page_num:data.data.page_num, max_page:data.data.max_page});
+					this.$broadcast('row-flash', data.data.data);
+				}
 			},
 			//////////////////////////////////////
 			'form-refresh': function () {
-				//
+				if (this.actionRefresh == null) return;
+
+				var that = this;
+				var objectsubmit = this.getFormValues();
+				var data = {
+					data: objectsubmit,
+					client_action: this.actionRefresh,
+					onsuccess: function (data) {
+						that.$emit('form-refresh-callback', data);
+					},
+					onerror: function (faildata) {}
+				};
+
+				this.$dispatch('ajax-action', data);
 			},
 			'form-submit': function (newparam, name) {
 				if (this.actionSave == null) return;
+				if (this.isDetail) return;
 
 				var that = this;
 				var objectsubmit = this.getFormValues();
@@ -115,7 +142,7 @@
 				this.$dispatch('ajax-action', data);
 			},
 			'form-reset': function () {
-				//
+				$(this.selector)[0].reset();
 			},
 			'form-show': function () {
 				this.isHidden = false;
@@ -124,31 +151,59 @@
 				this.isHidden = true;
 			},
 			/////////////////////////////////
-			'form-new': function () {
-				//
+			'form-new': function (name) {
+				if (this.name == name) {
+					this.$emit('form-reset');
+					this.$emit('form-show');
+					this.$broadcast('clear-field');
+				}
 			},
-			'form-edit': function () {
-				//
+			'form-edit': function (data, name, isdetail) {
+				if (this.name == name) {
+					this.isDetail = isdetail;
+					this.$broadcast('flash-field', data);
+					this.$emit('form-show');
+				}
 			},
-			'form-detail': function () {
-				//
-			},
-			'form-close': function () {
-				//
+			'form-close': function (name) {
+				if (this.name == name)
+					this.$emit('form-hide');
 			},
 			////////////////////////////////////
-			'row-detail': function () {
-				//
+			'row-detail': function (data) {
+				if (this.targetEdit == null) return;
+				this.$dispatch('form-edit', data, this.targetEdit, true);
 			},
-			'row-edit': function () {
-				//
+			'row-edit': function (data) {
+				if (this.targetEdit == null) return;
+				this.$dispatch('form-edit', data, this.targetEdit, false);
 			},
-			'row-delete': function () {
-				//
+			'row-delete': function (data) {
+				if (this.actionDelete == null) return;
+
+				var that = this;
+				var confirm = {
+					title: 'Delete data',
+					text: 'Are you sure to delete this data?',
+					onconfirm: function (newvalue) {
+						var param = {
+							data: data,
+							client_action:that.actionDelete,
+							onsuccess: function (dataret) {
+								that.$emit('form-delete-callback', dataret);
+							},
+							onerror: function (fail) {}
+						};
+
+						that.$dispatch('ajax-action', param);
+					}					
+				};
+
+				this.$dispatch('app-confirm', confirm);
 			},
 			////////////////////////////////////
 			'page-changed': function () {
-				//
+				this.$emit('form-refresh');
 			}
 		},
 		ready: function () {
