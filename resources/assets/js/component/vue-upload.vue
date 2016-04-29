@@ -1,10 +1,14 @@
 <template>
 	<div class="field">
 		<label>{{label}}</label>
-		<img src="/manga/image/thumb/dummy.png" class="ui image">
-		<button class="ui labeled small icon button" @click="showBrowse"><i class="icon upload"></i> Upload</button>
+		<img v-if="canShowPreview" class="ui image" :src="getImageUrl">
+		<a   v-if="canShowLink" target="_blank" :href="getImageUrl">{{ value }}</a>
+		<button class="ui labeled small icon button" type="button" @click="showBrowse"><i class="icon upload"></i> Upload</button>
+
 		<input type="file" :accept="accept" :id="id" style="display:none;">
+
 		<vue-progress :name="name"></vue-progress>
+
 		<div v-if="multiple">
 			<input :name="name + '[]'" type="hidden" :value="value" v-for="val in valueArr">
 		</div>
@@ -30,6 +34,21 @@
 			},
 			selector: function () {
 				return '#' + this.id;
+			},
+			getImageUrl: function () {
+				if (this.value == null)
+					return '/manga/image/thumb/dummy.png';
+				return '/manga/image/thumb/' + this.value;
+			},
+			canShowPreview: function () {
+				if (!this.multiple && this.value != null && this.showPreview)
+					return true;
+				return false;
+			},
+			canShowLink: function () {
+				if (!this.multiple && this.value != null && !this.showPreview)
+					return true;
+				return false;
 			}
 		},
 		data: function () {
