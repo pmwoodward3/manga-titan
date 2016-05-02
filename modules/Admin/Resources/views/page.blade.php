@@ -9,11 +9,13 @@
 	<div class="sixteen wide column form-admin" id="admin-side-left">
 		<vue-form
 		name="page-list"
-		form-target-add="page-form"
-		form-target-edit="page-form"
-		:form-action="{get:'get-page', delete: 'delete-page', save: 'save-page'}"
+		target-add="page-form"
+		target-edit="page-form"
+		action-delete="delete-page"
+		action-save="save-page"
+		action-refresh="get-page"
 		:hide-on-save="false"
-		:optional-param="{id_manga:{{$id_manga}}}"
+		:params = "[{name:'id_manga', value:{{$id_manga}} }]"
 		>
 			<vue-form-title
 			title="Page List"

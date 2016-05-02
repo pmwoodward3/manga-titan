@@ -36,12 +36,15 @@
 				image: 'image'
 				}"
 				></vue-form-list>
-				<vue-file-upload
+				<vue-grid :maps="[
+					{name:'page', key:'page'},
+					{name:'image', key:'image'}
+				]"></vue-grid>
+				<vue-upload
 				name="modal-form-upload"
-				type="image"
 				:multiple="true"
-				:is-show="false"></vue-file-upload>
-				<vue-progress-bar :name="name"></vue-progress-bar>
+				:hidden="true"></vue-upload>
+				<vue-progress :name="name" :hidden="true"></vue-progress>
 			</form>
 		</div>
 	</div>
@@ -69,7 +72,7 @@
 				this.$emit('media-close');
 			},
 			triggerUpload: function() {
-				this.$broadcast('input-field');
+				this.$broadcast('browse-upload','modal-form-upload');
 			},
 			getFormValues: function () {
 				var submitdata = $('#' + this.id_form).serializeArray();
@@ -100,15 +103,11 @@
 					$('#' + this.id_form + '-modal').modal({observeChanges:true}).modal('show');
 				}
 			},
-			'upload-progress': function (command, value) {
-				switch (command) {
-					case 'progress-set':
-						this.$broadcast(command, value, this.name);break;
-					case 'progress-complete':
-					case 'progress-hide':
-					case 'progress-show':
-					case 'progress-reset':
-						this.$broadcast(command, this.name);break;
+			'upload-progress': function (info) {
+				if (info.event == 'progress-set') {
+					this.$broadcast('progress-set', this.name, info.progress);
+				} else {
+					this.$broadcast(info.event, this.name);
 				}
 			},
 			'upload-complete': function () {
@@ -118,7 +117,6 @@
 					newval.push({id:index, image: item, page: 'Page ' + (index+1) });
 				});
 				this.$broadcast('row-flash', newval, true);
-				this.$broadcast('clear-field');
 			}
 		},
 		ready: function () {}

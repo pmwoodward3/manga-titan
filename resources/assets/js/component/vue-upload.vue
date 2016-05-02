@@ -1,20 +1,19 @@
 <template>
-	<div class="field">
+	<div class="field" v-show="!hidden">
 		<label>{{label}}</label>
-		<img v-if="canShowPreview" class="ui image" :src="getImageUrl">
+		<img v-if="canShowPreview" class="ui image" :src="getImageUrl" style="margin-bottom:1em;">
 		<a   v-if="canShowLink" target="_blank" :href="getImageUrl">{{ value }}</a>
 		<button class="ui labeled small icon button" type="button" @click="showBrowse"><i class="icon upload"></i> Upload</button>
 
-		<input type="file" :accept="accept" :id="id" style="display:none;">
-
-		<vue-progress :name="name"></vue-progress>
-
+		<input type="file" :accept="accept" :id="id" style="display:none;" :multiple="multiple">
 		<div v-if="multiple">
-			<input :name="name + '[]'" type="hidden" :value="value" v-for="val in valueArr">
+			<input :name="name + '[]'" type="hidden" :value="val" v-for="val in valueArr">
 		</div>
 		<div v-else>
 			<input :name="name" type="hidden" :value="value">
 		</div>
+
+		<vue-progress :name="name"></vue-progress>
 	</div>
 </template>
 
@@ -27,6 +26,7 @@
 			multiple:		{ required: false, type: Boolean, default: false },
 			accept:			{ required: false, type: String, default: 'image/*' },
 			showPreview:	{ required: false, type: Boolean, default: false },
+			hidden:			{ required: false, type: Boolean, default: false }
 		},
 		computed: {
 			id: function () {
@@ -41,12 +41,12 @@
 				return '/manga/image/thumb/' + this.value;
 			},
 			canShowPreview: function () {
-				if (!this.multiple && this.value != null && this.showPreview)
+				if (!this.multiple && this.value != null && this.showPreview && !this.hidden)
 					return true;
 				return false;
 			},
 			canShowLink: function () {
-				if (!this.multiple && this.value != null && !this.showPreview)
+				if (!this.multiple && this.value != null && !this.showPreview && !this.hidden)
 					return true;
 				return false;
 			}
@@ -62,6 +62,14 @@
 			}
 		},
 		methods: {
+			dispatchInfo: function (uploadevent, progress) {
+				var info = {
+					event: uploadevent,
+					progress: progress
+				};
+				this.$broadcast(uploadevent, this.name, progress);
+				this.$dispatch('upload-progress', info);
+			},
 			showBrowse: function () {
 				$(this.selector).trigger('click');
 			},
@@ -86,7 +94,10 @@
 				var formData = new FormData;
 				var data = {};
 				formData.append('image', this.tmpFile[this.current]);
-				if (this.current == this.tmpFile.length) this.uploadFinish();
+				if (this.current == this.tmpFile.length) {
+					this.uploadFinish();
+					return;
+				}
 				if (this.multiple) {
 					data = {
 						data:formData,
@@ -99,8 +110,9 @@
 							that.error++;
 						},
 						oncomplete: function () {
+							var progress = (that.current / that.tmpFile.length * 100);
 							that.current++;
-							that.$broadcast('progress-value', that.name, (that.current / that.tmpFile.length * 100));
+							that.dispatchInfo('progress-set', progress)
 							that.uploadFile();
 						}
 					}
@@ -113,7 +125,7 @@
 							},
 							onprogress: function (e) {
 								var val = e.loaded/e.total * 100;
-								that.$broadcast('progress-set', that.name ,val);
+								that.dispatchInfo('progress-set', val);
 							}
 						},
 						onsuccess: function (response) {
@@ -136,19 +148,25 @@
 				this.success = 0;
 				this.error = 0;
 
-				this.$broadcast('progress-show', this.name);
-				this.$broadcast('progress-reset', this.name);
+				this.dispatchInfo('progress-reset');
+				this.dispatchInfo('progress-show');
 				this.uploadFile();
 			},
 			uploadFinish: function () {
-				this.$broadcast('progress-complete', this.name);
-				this.$broadcast('progress-hide', this.name);
+				var that = this;
+				this.dispatchInfo('progress-complete');
+				this.dispatchInfo('progress-hide');
 				if (this.errorfile > 0) {
 					var notify = {title: 'Upload Failed', text: '', type:'error'};
 					notify.text = this.error + ' of ' + this.tmpFile.length + ' files error while upload';
 					this.$dispatch('app-notify', notify);
 				}
 				this.tmpFile = [];
+				$(this.selector).val('');
+				
+				this.$nextTick( function () {
+					that.$dispatch('upload-complete');
+				});
 			}
 		},
 		events: {
@@ -171,6 +189,10 @@
 			'clear-field': function () {
 				this.value = null;
 				this.valueArr = [];
+			},
+			'browse-upload': function (nameinput) {
+				if (this.name == nameinput)
+					this.showBrowse();
 			}
 		},
 		ready: function () {
