@@ -36,12 +36,11 @@
 					placeholder="Description"
 					type="textarea"></vue-form-field>
 
-					<vue-file-upload
+					<vue-upload
 					label="Logo"
-					type="image"
 					name="thumb"
-					:show-image = "true"
-					></vue-file-upload>
+					:show-preview = "true"
+					></vue-upload>
 				</vue-form-fields>
 			</vue-form>
 		</vue-tab-content>
@@ -69,12 +68,12 @@
 			name="manga-form"
 			:form-action="{save:'save-manga'}"
 			>
-				<vue-form-list
+				<vue-list
 				list-type="comment"
 				:maps="{
 				comments: 'Comment',
 				user: 'User'
-				}"></vue-form-list>
+				}"></vue-list>
 			</vue-form>
 		</vue-tab-content>
 	</div>

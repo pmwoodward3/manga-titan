@@ -23,18 +23,25 @@
 			:button-refresh="true"
 			:button-delete="true"
 			></vue-form-title>
-			<vue-form-list
-			:is-href="{
-			detail:{enable:true,format:'{!! $routeurl !!}'},
-			edit:{enable:false,format:'{0}'},
-			delete:{enable:false,format:'{0}'}
-			}"
-			:maps="{
-			title: 'Manga',
-			page: 'Page Count',
-			created_at: 'Uploaded At'
-			}"
-			></vue-form-list>
+			<div class="ui segment form-content">
+				<vue-table
+				:href="{
+				detail:{enable:true,format:'{!! $routeurl !!}'},
+				edit:{enable:false,format:'{0}'},
+				delete:{enable:false,format:'{0}'}
+				}"
+				:with-check = "true"
+				:with-control = "true"
+				:can-delete = "true"
+				:can-edit = "true"
+				:class="['very','basic','selectable','form-table']"
+				:maps="[
+					{text: 'Manga', key: 'title'},
+					{text: 'Page Count', key: 'page'},
+					{text: 'Uploaded At', key: 'created_at'}
+				]"
+				></vue-table>
+			</div>
 			<vue-form-footer></vue-form-footer>
 		</vue-form>
 	</div>

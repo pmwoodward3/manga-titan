@@ -26,15 +26,12 @@
 			>
 				<a slot="right" href="{{ route('admin.manga') }}" class="ui red icon button"><i class="icon share"></i></a>
 			</vue-form-title>
-			<vue-form-list
-			list-type="grid"
-			:can-detail = "false"
-			:can-edit = "false"
-			:maps="{
-			title: 'title',
-			image: 'image'
-			}"
-			></vue-form-list>
+			<div class="ui segment form-content">
+				<vue-grid
+				:can-detail="false"
+				:can-edit="false"
+				:maps="{id:'id', title:'title', image:'image'}"></vue-grid>
+			</div>
 			<vue-form-footer></vue-form-footer>
 		</vue-form>
 	</div>

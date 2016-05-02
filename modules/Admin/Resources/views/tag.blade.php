@@ -20,14 +20,19 @@
 			:button-refresh="true"
 			:button-delete="true"
 			></vue-form-title>
-			<vue-form-list
-			:can-detail = "false"
-			primary-id="id"
-			:maps="{
-			tag: 'Tag',
-			used: 'Used'
-			}"
-			></vue-form-list>
+			<div class="ui segment form-content">
+			<vue-table
+			:class="['very','basic','selectable','form-table']"
+			:can-delete="true"
+			:can-edit="true"
+			:maps="[
+				{text:'Tag', key:'tag'},
+				{text:'Count', key:'used'}
+			]"
+			:with-check="true"
+			:with-control="true"
+			></vue-table>
+			</div>
 			<vue-form-footer></vue-form-footer>
 		</vue-form>
 	</div>

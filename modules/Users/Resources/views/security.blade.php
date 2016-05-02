@@ -10,7 +10,7 @@
 	<div class="column">
 		<div class="ui green segment">
 			<h3 class="ui header dividing">Change Password</h3>
-			<vue-new-form
+			<vue-form
 			name="password"
 			:prevent-submit="false"
 			action="{{ route('user.post.security') }}"
@@ -19,7 +19,7 @@
 				<vue-input type="password" name="password" label="New Password" placeholder="New Password"></vue-input>
 				<vue-input type="password" name="password_repeat" label="Repeat Password" placeholder="Repeat Password"></vue-input>
 				<button class="ui button small green" type="submit">Change Password</button>
-			</vue-new-form>
+			</vue-form>
 			@if($errors->count() > 0)
 						
 				@foreach ($errors->all() as $error)
@@ -37,11 +37,11 @@
 	<div class="column">
 		<div class="ui blue segment">
 			<h3 class="ui header dividing">E-Mail</h3>
-			<vue-new-form name="email" action-save="change-email" :hide-on-save="false">
+			<vue-form name="email" action-save="change-email" :hide-on-save="false">
 				<vue-input name="email" default-value="{{ $user->email }}" label="Current Email"></vue-input>
 				<vue-checkbox name="publish" label="Publish Email" :default-value="{{$user->is_public?'true':'false'}}"></vue-checkbox>
 				<button type="submit" class="ui button small blue">Change Email</button>
-			</vue-new-form>
+			</vue-form>
 		</div>
 	</div>
 </div>
