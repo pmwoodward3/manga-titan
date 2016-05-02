@@ -14,7 +14,7 @@
 </style>
 
 <template>
-	<div class="ui long fullscreen modal form-modal" :id="id_form + '-modal'">
+	<div class="ui long fullscreen modal form-modal" :id="id_modal">
 		<div class="header">
 			{{ title }}
 			<div class="ui small icon buttons right floated">
@@ -24,22 +24,12 @@
 			</div>
 		</div>
 		<div class="content" style="min-height:350px;">
-			<form :name="id_form" method="post" class="no-style form-admin" :id="id_form">
-				<vue-form-list
-				list-type="grid"
-				primary-id="image"
+			<form method="post" class="no-style form-admin" :id="id">
+				<vue-grid
+				:maps="{id: 'image', title:'page', image:'image'}"
 				:can-edit="false"
 				:can-delete="false"
-				:can-detail="false"
-				:maps="{
-				title: 'page',
-				image: 'image'
-				}"
-				></vue-form-list>
-				<vue-grid :maps="[
-					{name:'page', key:'page'},
-					{name:'image', key:'image'}
-				]"></vue-grid>
+				:can-detail="false"></vue-grid>
 				<vue-upload
 				name="modal-form-upload"
 				:multiple="true"
@@ -53,15 +43,24 @@
 <script>
 	module.exports = {
 		props: {
-			name: { required: true, type:String },
-			title: { required:false, type:String, default:'Media Manager'},
-			formAction: { required: false, type:Object, default:function () {return {};} },
-			formTargetSet: { required:true, type:String },
-			optionalParam: { required:false, type:Object, default:function () {return {};} }
+			name:			{ required: true, type:String },
+			title:			{ required:false, type:String, default:'Media Manager'},
+			formAction:		{ required: false, type:Object, default:function () {return {};} },
+			formTargetSet:	{ required:true, type:String },
+			optionalParam:	{ required:false, type:Object, default:function () {return {};} }
 		},
 		computed: {
-			id_form: function () {
+			id: function () {
 				return 'form-' + this.name;
+			},
+			id_modal: function () {
+				return this.id + '-modal';
+			},
+			selector: function () {
+				return '#' + this.id;
+			},
+			selector_modal: function () {
+				return '#' + this.id_modal;
 			}
 		},
 		methods: {
@@ -75,7 +74,7 @@
 				this.$broadcast('browse-upload','modal-form-upload');
 			},
 			getFormValues: function () {
-				var submitdata = $('#' + this.id_form).serializeArray();
+				var submitdata = $(this.selector).serializeArray();
 				var objectsubmit = {};
 				$.each(submitdata, function (index, item) {
 					if (item.name.endsWith("[]") && ! (item.name.replace('[]','') in objectsubmit))
@@ -91,16 +90,16 @@
 		},
 		events: {
 			'media-submit' : function () {
-				this.$dispatch('form-save', this.getFormValues(), this.formTargetSet);
+				this.$dispatch('form-submit', this.getFormValues(), this.formTargetSet);
 				this.$emit('media-close');
 			},
 			'media-close': function () {
-				$('#' + this.id_form + '-modal').modal('hide');
+				$(this.selector_modal).modal('hide');
 			},
 			'form-new': function (name) {
 				if (this.name == name) {
-					this.$broadcast('clear-field');
-					$('#' + this.id_form + '-modal').modal({observeChanges:true}).modal('show');
+					this.$broadcast('row-clear');
+					$(this.selector_modal).modal({observeChanges:true}).modal('show');
 				}
 			},
 			'upload-progress': function (info) {
