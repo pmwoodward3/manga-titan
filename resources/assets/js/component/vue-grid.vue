@@ -42,6 +42,16 @@
 		word-break: break-all;
 		word-wrap: break-word;
 	}
+	.sortable.grid li a.link {
+		display:block;
+		cursor: pointer;
+		position: absolute;
+		z-index: 99;
+		top:0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
 	.sortable.grid li .dimm {
 		position: absolute;
 		top:30px;
@@ -81,6 +91,7 @@
 	<ul class="sortable mini grid" v-if="items.length > 0">
 		<li v-for="item in items" :style="getBackground(item[maps.image])">
 			<div class="content"><span class="header" >{{ item[maps.title] }}</span></div>
+			<a v-if="withLink" class="link" :href="getLinks(item)"></a>
 			<input type="checkbox" :name="namecheck" :value="item[maps.id]" v-model="checks">
 			<div class="dimm">
 				<i class="icon huge checkmark"></i>
@@ -99,6 +110,9 @@
 		props: {
 			maps:			{ required: true, type: Object },
 			isComponent:	{ required: false, type: String, default: null },
+			canSelect: 		{ required: false, type: Boolean, default: true },
+			withLink: 		{ required: false, type: Boolean, default: false },
+			linkFormat: 	{ required: false, type: String, default: null }
 		},
 		computed: {
 			namecheck: function () {
@@ -128,6 +142,17 @@
 			}
 		},
 		methods: {
+			getLinks: function (item) {
+				var target = /\{\w+\}/ig;
+				var keytarget = '';
+				var ret = '';
+				keytarget = target.exec(this.linkFormat);
+				if (keytarget != null) {
+					keytarget = keytarget[0].substring(keytarget[0].length-1,1);
+					ret = this.linkFormat.replace(target, item[keytarget]);
+				}
+				return ret;
+			},
 			getBackground: function (image) {
 				if (image == '')
 					return {backgroundImage:"url('/manga/image/original/dummy.png')"};
@@ -139,11 +164,14 @@
 				if (typeof data != 'undefined') {
 					this.items = data;
 					this.checks = [];
-					this.$nextTick(function () {
-						$('.sortable.grid li').on('click','.dimm', function () {
-							$(this).parent().find('input').trigger('click');
+
+					if (this.canSelect) {
+						this.$nextTick(function () {
+							$('.sortable.grid li').on('click','.dimm', function () {
+								$(this).parent().find('input').trigger('click');
+							});
 						});
-					});
+					}
 					if (selectall) this.select_all = true;
 				}
 				
@@ -154,9 +182,11 @@
 			}
 		},
 		ready: function () {
-			$('.sortable.grid li').on('click','.dimm', function () {
-				$(this).parent().find('input').trigger('click');
-			});
+			if (this.canSelect) {
+				$('.sortable.grid li').on('click','.dimm', function () {
+					$(this).parent().find('input').trigger('click');
+				});
+			}
 		}
 	}
 </script>

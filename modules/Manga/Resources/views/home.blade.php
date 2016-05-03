@@ -13,7 +13,10 @@
 				<vue-filter></vue-filter>
 				<vue-grid
 				:maps="{id:'id', title:'title', image:'thumb'}"
-				is-component="vue-manga-extra"></vue-grid>
+				is-component="vue-manga-extra"
+				:can-select="false"
+				:with-link="true"
+				link-format="{{$routeurl}}"></vue-grid>
 				<vue-pagination></vue-pagination>
 			</div>
 		</vue-form>
