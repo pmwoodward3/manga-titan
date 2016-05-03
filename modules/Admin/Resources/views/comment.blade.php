@@ -5,9 +5,10 @@
 	<div class="nine wide column form-admin" id="admin-side-left">
 		<vue-form
 		name="comment-list"
-		form-target-add="comment-form"
-		form-target-edit="comment-form"
-		:form-action="{get:'get-comment', delete: 'comment-delete'}">
+		target-add="comment-form"
+		target-edit="comment-form"
+		action-refresh="get-comment"
+		action-delete="comment-delete">
 
 			<vue-form-title
 			title="Comments"
@@ -15,22 +16,17 @@
 			:button-refresh="true"
 			:button-delete="true"></vue-form-title>
 
-			<vue-form-list
-			:maps="{
-			comments: 'Comment',
-			manga: 'Manga',
-			user: 'User',
-			created_at: 'Comment at'
-			}"></vue-form-list>
+			<div class="ui segment form-content"></div>
 			<vue-form-footer></vue-form-footer>
 		</vue-form>
 	</div>
 	<div class="seven wide column form-admin" id="admin-side-right">
 		<vue-form
 		name="comment-list"
-		form-target-add="comment-form"
-		form-target-edit="comment-form"
-		:form-action="{save:'save-comment'}">
+		target-add="comment-form"
+		target-edit="comment-form"
+		action-save="save-comment"
+		:hidden="true">
 			<vue-form-title
 			title="Comment Detail"
 			icon="comment"

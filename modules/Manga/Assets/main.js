@@ -1,6 +1,5 @@
 Vue.component('vue-filter',			require('./component/vue-filter.vue'));
 Vue.component('vue-pagination',		require('./component/vue-pagination.vue'));
-Vue.component('vue-list',			require('./component/vue-list.vue'));
 Vue.component('vue-navigator',		require('./component/vue-navigator.vue'));
 Vue.component('vue-manga-page',		require('./component/vue-manga-page.vue'));
 Vue.component('vue-extra-content',	require('./component/vue-extra-content.vue'));
@@ -9,3 +8,4 @@ Vue.component('vue-desc-image',		require('./component/vue-desc-image.vue'));
 Vue.component('vue-desc-content',	require('./component/vue-desc-content.vue'));
 Vue.component('vue-desc-rating',	require('./component/vue-desc-rating.vue'));
 Vue.component('vue-desc-link',		require('./component/vue-desc-link.vue'));
+Vue.component('vue-manga-extra',	require('./component/vue-manga-extra.vue'));

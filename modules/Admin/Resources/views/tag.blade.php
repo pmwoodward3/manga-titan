@@ -9,9 +9,10 @@
 	<div class="nine wide column form-admin" id="admin-side-left">
 		<vue-form
 		name="tag-list"
-		form-target-add="tag-form"
-		form-target-edit="tag-form"
-		:form-action="{get:'get-tags', delete: 'delete-tags'}"
+		target-add="tag-form"
+		target-edit="tag-form"
+		action-refresh="get-tags"
+		action-delete="delete-tags"
 		>
 			<vue-form-title
 			title="Tag List"
@@ -39,9 +40,8 @@
 	<div class="seven wide column form-admin" id="admin-side-right">
 		<vue-form
 		name="tag-form"
-		:form-action="{save:'tag-save'}"
-		:is-hidden="true"
-		>
+		action-save="save-tags"
+		:hidden="true">
 			<vue-form-title
 			title="Tag Form"
 			icon="tag"
@@ -50,18 +50,11 @@
 			></vue-form-title>
 
 			<vue-form-fields>
-				<vue-form-field name="id" type="hidden"></vue-form-field>
-				<vue-form-field
-				name="tag"
-				label="Tag Name"
-				placeholder="Tag Name"
-				type="text"></vue-form-field>
-
-				<vue-form-field
-				name="desc"
-				label="Description"
-				placeholder="Tag Description"
-				type="textarea"></vue-form-field>
+				<vue-input name="id" :class="['ui', 'hidden', 'transition']" type="hidden"></vue-input>
+				<vue-input name="tag" label="Tag Name"
+				placeholder="Tag Name"></vue-input>
+				<vue-textarea name="desc" label="Description"
+				placeholder="Tag Description"></vue-textarea>
 			</vue-form-fields>
 		</vue-form>
 		@include('admin::empty')

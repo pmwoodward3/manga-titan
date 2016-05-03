@@ -11,11 +11,11 @@
 			<tr v-for="row in rows">
 				<td class="collapsing" v-if="withCheck">
 					<div class="ui fitted checkbox">
-						<input type="checkbox" :name="id + '[]'" :value="item[id]" v-model="check_list">
+						<input type="checkbox" :name="namecheck" :value="row[id]" v-model="check_list">
 						<label></label>
 					</div>
 				</td>
-				<td v-for="col in maps" v-text="row[col.key]"></td>
+				<td v-for="col in maps" v-html="row[col.key]"></td>
 				<td v-if="withControl">
 					<vue-row-control
 					:data-row.once="row"
@@ -68,9 +68,11 @@
 					var that = this;
 					this.checks = [];
 					if (val) {
-						$.each(this.rows, function (index, item) {
-							that.checks.push(item[that.id]);
-						});
+						if (this.rows.length > 0) {
+							$.each(this.rows, function (index, item) {
+								that.checks.push(item[that.id]);
+							});
+						}
 					}
 				},
 				get: function () {

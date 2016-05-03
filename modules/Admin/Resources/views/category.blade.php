@@ -9,9 +9,10 @@
 	<div class="nine wide column form-admin" id="admin-side-left">
 		<vue-form
 		name="category-list"
-		form-target-add="category-form"
-		form-target-edit="category-form"
-		:form-action="{get:'get-category', delete: 'delete-category'}"
+		target-add="category-form"
+		target-edit="category-form"
+		action-delete="delete-category"
+		action-refresh="get-category"
 		>
 			<vue-form-title
 			title="Category List"
@@ -20,22 +21,27 @@
 			:button-refresh="true"
 			:button-delete="true"
 			></vue-form-title>
-			<vue-form-list
-			primary-id="id"
-			:maps="{
-			category: 'Category',
-			used: 'Used'
-			}"
-			:can-detail="false"
-			></vue-form-list>
+			<vue-form-content>
+				<vue-table
+				:class="['very','basic','selectable','form-table']"
+				:can-edit="true"
+				:can-delete="true"
+				:maps="[
+					{text: 'Category', key:'category'},
+					{text: 'Count', key:'used'}
+				]"
+				:with-check="true"
+				:with-control="true"
+				></vue-table>
+			</vue-form-content>
 			<vue-form-footer></vue-form-footer>
 		</vue-form>
 	</div>
 	<div class="seven wide column form-admin" id="admin-side-right">
 		<vue-form
 		name="category-form"
-		:form-action="{save:'save-category'}"
-		:is-hidden="true"
+		action-save="save-category"
+		:hidden="true"
 		>
 			<vue-form-title
 			title="Category Form"
@@ -45,24 +51,12 @@
 			></vue-form-title>
 
 			<vue-form-fields>
-				<vue-form-field name="id" type="hidden"></vue-form-field>
-				<vue-form-field
-				name="category"
-				label="Category Name"
-				placeholder="Category Name"
-				type="text"></vue-form-field>
-
-				<vue-form-field
-				name="desc"
-				label="Description"
-				placeholder="Category Description"
-				type="textarea"></vue-form-field>
-
-				<vue-file-upload
-				label="Category Thumb"
-				type="image"
-				name="thumb"
-				></vue-file-upload>
+				<vue-input name="id" type="hidden" :class="['transition', 'hidden']"></vue-input>
+				<vue-input name="category" label="Category"
+				placeholder="Category"></vue-input>
+				<vue-textarea name="desc" label="Description"
+				placeholder="Description"></vue-textarea>
+				<vue-upload name="thumb" :show-preview="true" label="Category Thumb"></vue-upload>
 			</vue-form-fields>
 		</vue-form>
 		@include('admin::empty')

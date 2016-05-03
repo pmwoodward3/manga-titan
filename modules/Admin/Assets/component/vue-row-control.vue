@@ -64,8 +64,6 @@
 				this.$dispatch('row-delete', this.dataRow);
 			}
 		},
-		ready: function() {
-			//
-		}
+		ready: function() {}
 	}
 </script>

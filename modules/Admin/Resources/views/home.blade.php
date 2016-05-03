@@ -16,25 +16,17 @@
 		<vue-tab-content data-tab="web" :active="true">
 			<vue-form
 			name="manga-form"
-			:form-action="{save:'save-manga'}"
-			>
+			action-save="save-web">
 				<vue-form-title
 				title="Basic Info"
 				icon="home"
 				:button-save="true"
 				></vue-form-title>
 				<vue-form-fields>
-					<vue-form-field
-					name="title"
-					label="Web Name"
-					placeholder="Manga Titan"
-					type="text"></vue-form-field>
-
-					<vue-form-field
-					name="desc"
-					label="Web Description"
-					placeholder="Description"
-					type="textarea"></vue-form-field>
+					<vue-input name="title" label="Web Name"
+					placeholder="Manga Titan"></vue-input>
+					<vue-textarea name="desc" label="Web Description"
+					placeholder="Description"></vue-textarea>
 
 					<vue-upload
 					label="Logo"

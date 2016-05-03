@@ -33,7 +33,8 @@ class TagsController extends Controller implements AjaxResponse {
 	}
 
 	public static function saveData($data) {
-		//
+		$result = ['message' => 'This feature is disabled', 'success' => false];
+		return $result;
 	}
 	
 	public static function deleteData($data) {

@@ -85,13 +85,10 @@
 			<div class="dimm">
 				<i class="icon huge checkmark"></i>
 			</div>
-			<div class="extra content">
-				<vue-row-control
-				:can-detail="canDetail"
-				:can-edit="canEdit"
-				:can-delete="canDelete"
-				:data-row="item"
-				:class="['icon']"></vue-row-control>
+			<div class="extra content" v-if="isComponent != null">
+				<component
+				:is="$options.components[isComponent]"
+				:data-row="item"></component>
 			</div>
 		</li>
 	</ul>
@@ -101,9 +98,7 @@
 	module.exports = {
 		props: {
 			maps:			{ required: true, type: Object },
-			canDelete:		{ required: false, type: Boolean, default: true },
-			canEdit:		{ required: false, type: Boolean, default: true },
-			canDetail:		{ required: false, type: Boolean, default: true }
+			isComponent:	{ required: false, type: String, default: null },
 		},
 		computed: {
 			namecheck: function () {

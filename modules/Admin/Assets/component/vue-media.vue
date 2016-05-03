@@ -27,9 +27,7 @@
 			<form method="post" class="no-style form-admin" :id="id">
 				<vue-grid
 				:maps="{id: 'image', title:'page', image:'image'}"
-				:can-edit="false"
-				:can-delete="false"
-				:can-detail="false"></vue-grid>
+				is-component="vue-grid-control"></vue-grid>
 				<vue-upload
 				name="modal-form-upload"
 				:multiple="true"

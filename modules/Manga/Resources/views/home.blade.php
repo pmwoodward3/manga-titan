@@ -8,16 +8,12 @@
 @set('routeurl', str_ireplace(['%7B','%7D'],['{','}'], $routeurl))
 @section('content')
 	<div class="twelve wide column">
-		<vue-form id="aasf" :form-action="{get:'get-manga'}">
+		<vue-form name="list" action-refresh="get-manga">
 			<div class="ui stackable grid manga-grid">
 				<vue-filter></vue-filter>
-				<vue-list
-				list-type="grid"
-				:maps="{title: 'title',image: 'thumb'}"
-				:with-extra = "true"
-				:with-link = "true"
-				link-format="{{$routeurl}}"
-				></vue-list>
+				<vue-grid
+				:maps="{id:'id', title:'title', image:'thumb'}"
+				is-component="vue-manga-extra"></vue-grid>
 				<vue-pagination></vue-pagination>
 			</div>
 		</vue-form>

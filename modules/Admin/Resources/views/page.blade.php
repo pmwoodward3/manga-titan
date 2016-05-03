@@ -28,9 +28,9 @@
 			</vue-form-title>
 			<div class="ui segment form-content">
 				<vue-grid
-				:can-detail="false"
-				:can-edit="false"
-				:maps="{id:'id', title:'title', image:'image'}"></vue-grid>
+				:maps="{id:'id', title:'title', image:'image'}"
+				is-component="vue-grid-control">
+				</vue-grid>
 			</div>
 			<vue-form-footer></vue-form-footer>
 		</vue-form>

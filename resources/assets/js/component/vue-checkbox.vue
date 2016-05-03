@@ -3,7 +3,7 @@
 		<label>{{ label }}</label>
 		<div class="ui toggle checkbox">
 			<input type="checkbox" v-model="checked" :name="name" :value="value">
-			<label></label>
+			<label v-text="placeholder"></label>
 		</div>
 	</div>
 </template>
@@ -14,7 +14,8 @@
 			name:			{ required: true, type: String },
 			label:			{ required: false, type: String, default: null },
 			defaultValue:	{ required: false, type: Boolean, default: false },
-			value:			{ required: false, type: String, default: null }
+			value:			{ required: false, type: String, default: null },
+			placeholder:	{ required: false, type: String, default: null }
 		},
 		data: function () {
 			return {
