@@ -14,17 +14,18 @@
 </style>
 
 <template>
-<div class="ui fullwidth rail">
-	<div class="ui sticky" id="navigator">
-		<div class="ui compact menu">
-			<a class="item icon" @click="prevPage"><i class="icon chevron circle left"></i></a>
-			<select class="ui link dropdown item page">
-				<option v-for="i in max_page" :value="i + 1">Page {{ i + 1 }}</option>
-			</select>
-			<a class="item icon" @click="nextPage"><i class="icon chevron circle right"></i></a>
+	<div class="ui fullwidth rail">
+		<div class="ui sticky" id="navigator">
+			<div class="ui compact menu">
+				<a class="item icon" @click="prevPage"><i class="icon chevron circle left"></i></a>
+				<select class="ui link dropdown item page">
+					<option v-for="i in max_page" :value="i + 1">Page {{ i + 1 }}</option>
+				</select>
+				<a class="item icon" @click="nextPage"><i class="icon chevron circle right"></i></a>
+			</div>
 		</div>
 	</div>
-</div>
+	<slot></slot>
 </template>
 
 <script>
@@ -58,15 +59,16 @@
 			}
 		},
 		events: {
-			'flash-page': function (pages) {
+			'row-flash': function (pages) {
 				var that = this;
 				this.max_page = pages.length;
 				this.$nextTick(function () {that.$emit('page-change');});
+				return true;
 			},
 			'page-change': function () {
 				var that = this;
 				setTimeout(function () {$('.ui.dropdown.link.item.page').dropdown('set selected', that.page_num);},0);
-				this.$dispatch('page-changed', this.page_num);
+				this.$broadcast('change-page', this.page_num);
 			}
 		},
 		ready: function () {

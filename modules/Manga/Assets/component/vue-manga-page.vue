@@ -35,7 +35,7 @@
 			}
 		},
 		events: {
-			'flash-page': function (pages) {
+			'row-flash': function (pages) {
 				this.pages = pages;
 				this.page_index = 0;
 			},
@@ -44,16 +44,14 @@
 				this.has_error = false;
 
 				if (this.page_index < index) {
-					$("html, body").animate({ scrollTop: 0 }, "fast");
+					$("html, body").animate({ scrollTop: 80 }, "fast");
 				} else if (this.page_index > index) {
-					$("html, body").animate({ scrollTop: $(document).height() }, "fast");
+					$("html, body").animate({ scrollTop: $('#image-load').height() - 549 }, "fast");
 				}
 
 				this.page_index = page - 1;
 			}
 		},
-		ready: function () {
-			//
-		}
+		ready: function () {}
 	}
 </script>

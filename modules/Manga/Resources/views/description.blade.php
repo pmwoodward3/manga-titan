@@ -13,8 +13,8 @@
 	<h3 class="ui header dividing">Description</h3>
 	<vue-form
 	name="category"
-	:form-action="{get: 'detail-manga'}"
-	:optional-param="{id: {{$id_manga}} }">
+	action-refresh="detail-manga"
+	:params="[{name:'id', value: {{$id_manga}} }]">
 		<div class="ui stackable grid manga-grid">
 			<vue-desc>
 				<vue-desc-image slot="left" name="thumb"></vue-desc-image>
@@ -33,22 +33,24 @@
 		</div>
 	</vue-form>
 	<h3 class="ui header dividing">Thumbs</h3>
-	<vue-form :form-action="{get:'get-thumb-page'}" :optional-param="{id_manga: {{$id_manga}} }" name="thumb">
+	<vue-form action-refresh="get-thumb-page" :params="[{name:'id_manga', value: {{$id_manga}} }]" name="thumb">
 		<div class="ui stackable grid manga-grid">
-			<vue-list
-			list-type="grid"
-			:maps="{title: 'title',image: 'image'}"
-			:with-link = "true"
-			link-format="{{$routeurl}}"></vue-list>
+			<vue-grid
+			:maps="{id:'id', title:'title', image:'image'}"
+			:can-select="false"
+			:with-link="true"
+			link-format="{{$routeurl}}"></vue-grid>
 			<vue-pagination></vue-pagination>
 		</div>
 	</vue-form>
-	<vue-form :form-action="{get:'get-comment', save:'save-comment'}" :optional-param="{id_manga: {{$id_manga}} }" name="comment" :reset-on-save="true" :hide-on-save="false">
+	<vue-form action-refresh="get-comment" action-save="save-comment" :params="[{name:'id_manga', value: {{$id_manga}} }]" name="comment" :reset-on-save="true" :hide-on-save="false">
 		<div class="ui stackable grid manga-grid">
 			<vue-list
 			list-type="comment"
 			:maps="{author:'author', image: 'image', comment: 'comment', created_at: 'created_at'}"
 			:with-extra="true"></vue-list>
+		</div>
+		<div class="ui stackable grid manga-grid">
 			<div class="ui form" style="max-width:650px;width:100%;">
 				<div class="field">
 					<textarea name="comment"></textarea>

@@ -133,7 +133,7 @@ class PageController extends Controller implements AjaxResponse {
 			foreach ($pages as $page) {
 				$resdata[] = $page->img_path;
 			}
-			$result['data'] = $resdata;
+			$result['data']['data'] = $resdata;
 			$result['message'] = 'Success get data';
 			$result['success'] = true;
 		} catch (ModelNotFoundException $e) {
