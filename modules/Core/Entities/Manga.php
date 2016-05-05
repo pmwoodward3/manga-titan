@@ -4,6 +4,7 @@ namespace Modules\Core\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Cartalyst\Tags\TaggableTrait;
 use Cartalyst\Tags\TaggableInterface;
+use Carbon\Carbon;
 
 class Manga extends Model implements TaggableInterface{
 
@@ -35,6 +36,10 @@ class Manga extends Model implements TaggableInterface{
 
     public function comments(){
         return $this->morphToMany(__NAMESPACE__.'\Comment', 'commentable', 'commentable');
+    }
+
+    public function scopeNewest($query) {
+        return $query->where('created_at', '>=', Carbon::today()->subWeek());
     }
 
 }

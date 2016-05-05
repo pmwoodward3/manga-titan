@@ -1,5 +1,4 @@
 Vue.component('vue-filter',			require('./component/vue-filter.vue'));
-Vue.component('vue-pagination',		require('./component/vue-pagination.vue'));
 Vue.component('vue-navigator',		require('./component/vue-navigator.vue'));
 Vue.component('vue-manga-page',		require('./component/vue-manga-page.vue'));
 Vue.component('vue-extra-content',	require('./component/vue-extra-content.vue'));

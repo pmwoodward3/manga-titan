@@ -19,4 +19,8 @@ class Comment extends Model {
     	return $this->belongsTo(__NAMESPACE__.'\Users', 'id_users');
     }
 
+    public function commentable() {
+        return $this->morphTo();
+    }
+
 }

@@ -17,7 +17,7 @@
 				:can-select="false"
 				:with-link="true"
 				link-format="{{$routeurl}}"></vue-grid>
-				<vue-pagination></vue-pagination>
+				<div class="sixteen wide column"><vue-page></vue-page></div>
 			</div>
 		</vue-form>
 	</div>

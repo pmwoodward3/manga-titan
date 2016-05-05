@@ -1,21 +1,18 @@
 <template>
-<div class="sixteen wide column">
 	<input name="page_num" type="hidden" v-model="page_num">
 	<input name="max_page" type="hidden" v-model="max_page">
-
-	<div class="ui small buttons">
+	<div class="ui mini buttons">
 		<button type="button" :disabled="page_num <= 1" @click="prevPage" class="ui blue icon button"><i class="left chevron icon"></i></button>
 		<button type="button" :disabled="max_page == 0" class="ui blue basic button">1</button>
 		<button type="button" :disabled="page_num >= max_page" @click="nextPage" class="ui blue icon button"><i class="right chevron icon"></i></button>
 	</div>
-</div>
 </template>
 
 <script>
 	module.exports = {
 		props: {
-			maxPage: { required: false, type:Number, default:0 },
-			pageNum: { required: false, type:Number, default:0 }
+			maxPage:	{ required: false, type: Number, default: 0 },
+			pageNum:	{ required: false, type: Number, default: 0 }
 		},
 		data: function () {
 			return {

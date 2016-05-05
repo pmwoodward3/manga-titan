@@ -4,21 +4,18 @@
 @parent - Category
 @endsection
 
+@set('routeurl', 'ready')
+
 @section('content')
 <div class="sixteen wide column">
 	<h3 class="ui header dividing">Category</h3>
 	<vue-form name="category"
-	:form-action="{get: 'get-home-category'}">
-		<vue-list
-		primary-id="value"
-		:maps = "{
-		image: 'image',
-		title: 'text'
-		}"
-		:can-edit="false"
-		:can-delete="false"
-		:can-detail="false"
-		list-type="grid"></vue-list>
+	action-refresh = "get-home-category">
+		<vue-grid
+		:maps="{id:'id', title:'text', image:'image'}"
+		:can-select="false"
+		:with-link="true"
+		link-format="{{$routeurl}}"></vue-grid>
 	</vue-form>
 </div>
 @endsection
