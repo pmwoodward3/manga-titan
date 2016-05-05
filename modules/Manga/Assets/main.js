@@ -8,3 +8,4 @@ Vue.component('vue-desc-content',	require('./component/vue-desc-content.vue'));
 Vue.component('vue-desc-rating',	require('./component/vue-desc-rating.vue'));
 Vue.component('vue-desc-link',		require('./component/vue-desc-link.vue'));
 Vue.component('vue-manga-extra',	require('./component/vue-manga-extra.vue'));
+Vue.component('vue-title',			require('./component/vue-title.vue'));

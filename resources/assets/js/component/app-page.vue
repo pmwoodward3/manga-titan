@@ -79,6 +79,9 @@
 					});
 					data.onerror && data.onerror(failresponse);
 				});
+			},
+			appTitle: function (title) {
+				$('title').html(title);
 			}
 		},
 		events: {
@@ -90,7 +93,8 @@
 			'app-notify': function(data) {return this.appNotify(data);},
 			'app-confirm': function (data) {return this.appConfirm(data);},
 			'app-input': function (data) {return this.appInput(data);},
-			'ajax-action': function (data) {return this.appAjax(data);}
+			'ajax-action': function (data) {return this.appAjax(data);},
+			'title-change': function (title) {return this.appTitle(title);},
 		},
 		ready: function () {
 		}
