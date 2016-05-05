@@ -31,6 +31,7 @@
 				]"></vue-desc-content>
 			</vue-desc>
 		</div>
+		<vue-title format="Manga Titan - Description {title}"></vue-title>
 	</vue-form>
 	<h3 class="ui header dividing">Thumbs</h3>
 	<vue-form action-refresh="get-thumb-page" :params="[{name:'id_manga', value: {{$id_manga}} }]" name="thumb">
@@ -40,7 +41,7 @@
 			:can-select="false"
 			:with-link="true"
 			link-format="{{$routeurl}}"></vue-grid>
-			<vue-pagination></vue-pagination>
+			<vue-page></vue-page>
 		</div>
 	</vue-form>
 	<vue-form action-refresh="get-comment" action-save="save-comment" :params="[{name:'id_manga', value: {{$id_manga}} }]" name="comment" :reset-on-save="true" :hide-on-save="false">

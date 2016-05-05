@@ -39,21 +39,28 @@
 		computed: {
 			getUrl: function () {
 				var that = this;
-				var target = /\{\w+\}/ig;
-				var keytarget = '';
 				var ret = {};
 				var hreff = $.extend(true, {}, this.isHref);
 				$.map(hreff, function (item, index) {
-					keytarget = target.exec(item.format);
-					if (keytarget != null) {
-						keytarget = keytarget[0].substring(keytarget[0].length-1,1);
-						ret[index] = item.format.replace(target, that.dataRow[keytarget]);
-					}
+					ret[index] = that.replaceRegex(item.format, that.dataRow);
 				});
 				return ret;
-			}
+			},
 		},
 		methods: {
+			replaceRegex: function (format, data) {
+				var target = /\{\w+\}/ig;
+				var regexres = format.match(target);
+				var ret = format;
+				var key = '';
+				if (regexres != null) {
+					$.each(regexres, function (index, result) {
+						key = result.substring(result.length-1,1);
+						ret = ret.replace(result, data[key]);
+					});
+				}
+				return ret;
+			},
 			rowDetail: function () {
 				this.$dispatch('row-detail', this.dataRow);
 			},

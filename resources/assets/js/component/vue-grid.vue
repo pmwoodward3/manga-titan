@@ -144,12 +144,16 @@
 		methods: {
 			getLinks: function (item) {
 				var target = /\{\w+\}/ig;
-				var keytarget = '';
+				var keytarget = null;
+				var key = '';
 				var ret = '';
-				keytarget = target.exec(this.linkFormat);
+				keytarget = this.linkFormat.match(target);
 				if (keytarget != null) {
-					keytarget = keytarget[0].substring(keytarget[0].length-1,1);
-					ret = this.linkFormat.replace(target, item[keytarget]);
+					ret = this.linkFormat;
+					$.each(keytarget, function (index, regres) {
+						key = regres.substring(regres.length-1,1);
+						ret = ret.replace(regres, item[key]);
+					});
 				}
 				return ret;
 			},
