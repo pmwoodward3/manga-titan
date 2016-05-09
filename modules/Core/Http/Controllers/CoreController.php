@@ -41,6 +41,7 @@ class CoreController extends Controller {
 			'save-tags'			=> __NAMESPACE__.'\TagsController::saveData',
 			'delete-tags'		=> __NAMESPACE__.'\TagsController::deleteData',
 			'source-tags'		=> __NAMESPACE__.'\TagsController::sourceData',
+			'get-all-tags'		=> __NAMESPACE__.'\TagsController::getAllTags',
 
 			'get-user'			=> __NAMESPACE__.'\UserController::getData',
 			'save-user'			=> __NAMESPACE__.'\UserController::saveData',
