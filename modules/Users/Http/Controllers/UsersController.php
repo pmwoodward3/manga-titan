@@ -106,5 +106,10 @@ class UsersController extends Controller {
 	public function notify() {
 		return view('users::notify');
 	}
+
+	public function subscribe()
+	{
+		return view('users::subscribe');
+	}
 	
 }

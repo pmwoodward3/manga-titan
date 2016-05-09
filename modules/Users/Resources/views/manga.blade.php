@@ -12,18 +12,16 @@
 			<thead>
 				<tr>
 					<th>Manga</th>
-					<th>Page</th>
+					<th>Page Count</th>
 					<th>Price</th>
-					<th>Views</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr v-for="n in 20">
 					<td>Megapa	</td>
-					<td>124 Pages</td>
+					<td>124</td>
 					<td>$5.00</td>
-					<td>1234 Views</td>
 					<td>
 						<i class="icon list"></i>
 						<i class="icon pencil"></i>

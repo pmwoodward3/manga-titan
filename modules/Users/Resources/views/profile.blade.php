@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-debug($user)
 <div class="ui green segment">
 	<h3 class="ui header dividing">Profile</h3>
 	<vue-new-form name="photo" :hide-on-save="false" action-save="save-profile">
@@ -42,7 +41,7 @@ debug($user)
 					</div>
 				</div>
 				<vue-textarea name="about" default-value="{{ $user->about }}" label="About Me"></vue-textarea>
-				<button class="ui button labeled icon small green" type="submit"><i class="icon save"></i> Save Profile</button>
+				<button class="ui button labeled icon tiny green" type="submit"><i class="icon save"></i> Save Profile</button>
 			</div>
 		</div>
 	</div>

@@ -18,7 +18,7 @@
 				<vue-input type="password" name="current_password" label="Current Password" placeholder="Current Password"></vue-input>
 				<vue-input type="password" name="password" label="New Password" placeholder="New Password"></vue-input>
 				<vue-input type="password" name="password_repeat" label="Repeat Password" placeholder="Repeat Password"></vue-input>
-				<button class="ui button small green" type="submit">Change Password</button>
+				<button class="ui button icon labeled tiny green" type="submit"><i class="icon refresh"></i>Save Changes</button>
 			</vue-form>
 			@if($errors->count() > 0)
 						
@@ -40,7 +40,7 @@
 			<vue-form name="email" action-save="change-email" :hide-on-save="false">
 				<vue-input name="email" default-value="{{ $user->email }}" label="Current Email"></vue-input>
 				<vue-checkbox name="publish" label="Publish Email" :default-value="{{$user->is_public?'true':'false'}}"></vue-checkbox>
-				<button type="submit" class="ui button small blue">Change Email</button>
+				<button class="ui button icon labeled tiny blue" type="submit"><i class="icon save"></i>Save Changes</button>
 			</vue-form>
 		</div>
 	</div>
