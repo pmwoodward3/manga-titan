@@ -96,7 +96,7 @@
 			<div class="dimm">
 				<i class="icon huge checkmark"></i>
 			</div>
-			<div class="extra content" v-if="isComponent != null">
+			<div class="extra content" v-show="isComponent != null">
 				<component
 				:is="$options.components[isComponent]"
 				:data-row="item"></component>
@@ -147,12 +147,13 @@
 				var keytarget = null;
 				var key = '';
 				var ret = '';
+				var that = this;
 				keytarget = this.linkFormat.match(target);
 				if (keytarget != null) {
 					ret = this.linkFormat;
 					$.each(keytarget, function (index, regres) {
 						key = regres.substring(regres.length-1,1);
-						ret = ret.replace(regres, item[key]);
+						ret = ret.replace(regres, item[that.maps[key]]);
 					});
 				}
 				return ret;

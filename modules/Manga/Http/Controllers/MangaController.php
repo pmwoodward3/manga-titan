@@ -14,12 +14,12 @@ class MangaController extends Controller {
 		return view('manga::home');
 	}
 	
-	public function category($category='')
+	public function category()
 	{
 		return view('manga::category');
 	}
 
-	public function tags($tag='')
+	public function tags()
 	{
 		return view('manga::tags');
 	}

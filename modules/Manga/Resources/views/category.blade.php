@@ -4,7 +4,7 @@
 @parent - Category
 @endsection
 
-@set('routeurl', 'ready')
+@set('routeurl', route('manga.home') . '?category={id}')
 
 @section('content')
 <div class="sixteen wide column">
@@ -12,7 +12,7 @@
 	<vue-form name="category"
 	action-refresh = "get-home-category">
 		<vue-grid
-		:maps="{id:'id', title:'text', image:'image'}"
+		:maps="{id:'value', title:'text', image:'image'}"
 		:can-select="false"
 		:with-link="true"
 		link-format="{{$routeurl}}"></vue-grid>
