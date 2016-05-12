@@ -9,6 +9,7 @@
         "laravel/framework": "5.1.*",
         "intervention/image": "^2.3",
         "intervention/imagecache": "^2.3",
+        "laravel/cashier": "~5.0",
         "cartalyst/sentinel": "2.0.*",
         "cartalyst/tags": "2.0.*",
         "radic/blade-extensions": "~6.0",
@@ -17,7 +18,7 @@
         "pingpong/modules": "~2.0",
         "pingpong/themes": "~2.0",
         "ircmaxell/password-compat": "1.*",
-	"baum/baum":"~1.1",
+	    "baum/baum":"~1.1",
         "webpatser/laravel-uuid": "^2.0"
     },
     "require-dev": {
