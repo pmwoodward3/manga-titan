@@ -144,6 +144,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class,
 
         Pingpong\Themes\ThemesServiceProvider::class,
         Pingpong\Modules\ModulesServiceProvider::class,

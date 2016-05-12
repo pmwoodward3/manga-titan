@@ -9,12 +9,16 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Laravel\Cashier\Contracts\Billable as BillableContract;
+use Laravel\Cashier\Billable;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
-                                    CanResetPasswordContract
+                                    CanResetPasswordContract,
+                                    BillableContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
+    use Billable;
 
     /**
      * The database table used by the model.
@@ -36,4 +40,11 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * The attributes to convert type to Carbon date.
+     * 
+     * @var array
+     */
+    protected $dates = ['trial_ends_at', 'subscription_ends_at'];
 }
