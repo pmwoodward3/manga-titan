@@ -3,6 +3,14 @@
 @section('pageScript')
 <script src="{{ Module::asset('admin:js/main.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.ui.labeled.icon.sidebar').sidebar({transition:'overlay'});
+		$('#sidebar-menu').click(function () {
+			$('.ui.labeled.icon.sidebar').sidebar('toggle');
+		});
+	});
+</script>
 @endsection
 
 @section('pageStyle')
@@ -13,8 +21,20 @@
 @include('admin::menubar')
 <app-page url-ajax="{{ route('core.ajax') }}" id="admin-grid">
 	@include('admin::sidebar')
-	<div id="admin-area" class="thirteen wide column">
-		@yield('content')
+	<div id="admin-area" class="sixteen wide column">
+		@section('content')
+		<div class="ui grid">
+			<div class="ten wide column form-admin" id="admin-side-left">
+				@yield('left-side-content')
+			</div>
+			<div class="six wide column form-admin" id="admin-side-right">
+				@yield('right-side-content')
+				@section('empty')
+				@include('admin::empty')
+				@show
+			</div>
+		</div>
+		@show
 	</div>
 </app-page>
 @endsection

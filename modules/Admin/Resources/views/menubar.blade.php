@@ -2,7 +2,8 @@
 
 @section('pageMenu')
 <div id="admin-menu" class="ui borderless menu">
-	<div class="ui container">
+	<div class="ui fluid container">
+		<a href="#" id="sidebar-menu" class="item"><i class="icon large sidebar"></i></a>
 		<div class="item header">
 			<img class="logo" src="{{ asset('logo.png') }}">
 			Manga Titan
