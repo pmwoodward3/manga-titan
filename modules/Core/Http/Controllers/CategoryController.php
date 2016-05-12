@@ -21,7 +21,7 @@ class CategoryController extends Controller implements AjaxResponse {
 				'id' => $cate->id,
 				'category' => $cate->category,
 				'desc' => $cate->description,
-				'thumb' => $cate->thumb_path,
+				'thumb' => $cate->thumb,
 				'used' => $cate->manga->count()
 			];
 		}
@@ -43,7 +43,7 @@ class CategoryController extends Controller implements AjaxResponse {
 			}
 			$category->category = $data['category'];
 			$category->description = $data['desc'];
-			$category->thumb_path = $data['thumb'];
+			$category->thumb = $data['thumb'];
 			$category->save();
 
 			$result['message'] = 'Success Save Data';
@@ -91,7 +91,7 @@ class CategoryController extends Controller implements AjaxResponse {
 			$datacol[] = [
 				'value' => $cate->id,
 				'text' => $cate->category,
-				'image' => $cate->thumb_path,
+				'image' => $cate->thumb,
 			];
 		}
 		$retdata = ['data' => $datacol];

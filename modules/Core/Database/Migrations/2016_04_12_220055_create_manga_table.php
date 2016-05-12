@@ -23,7 +23,7 @@ class CreateMangaTable extends Migration {
             $table->increments('id');
             $table->string('category', 40)->unique();
             $table->text('description')->nullable();
-            $table->string('thumb_path',255)->nullable();
+            $table->string('thumb',255)->nullable();
             $table->timestamps();
         });
 
@@ -33,7 +33,7 @@ class CreateMangaTable extends Migration {
             $table->integer('id_uploader')->unsigned()->nullable();
             $table->string('title', 200);
             $table->text('description')->nullable();
-            $table->string('thumb_path',255);
+            $table->string('thumb',255);
             $table->integer('views')->unsigned()->default(0);
             $table->timestamps();
 

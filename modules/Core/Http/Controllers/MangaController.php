@@ -26,7 +26,7 @@ class MangaController extends Controller implements AjaxResponse {
 				'description' => $mang->description,
 				'category' => $mang->category->id,
 				'tags' => $mang->getTagsArr(),
-				'thumb' => $mang->thumb_path,
+				'thumb' => $mang->thumb,
 				'views' => $mang->views,
 				'created_at' => $mang->created_at->diffForHumans()
 			];
@@ -64,7 +64,7 @@ class MangaController extends Controller implements AjaxResponse {
 			$manga->id_uploader = Sentinel::getUser()->id;
 			$manga->title = $data['title'];
 			$manga->description = $data['description'];
-			$manga->thumb_path = $data['thumb'];
+			$manga->thumb = $data['thumb'];
 			
 			$category->manga()->save($manga);
 
@@ -102,7 +102,7 @@ class MangaController extends Controller implements AjaxResponse {
 			$data['title'] = $manga->title;
 			$data['description'] = $manga->description;
 			$data['category'] = $manga->category->category;
-			$data['thumb'] = $manga->thumb_path;
+			$data['thumb'] = $manga->thumb;
 			$data['views'] = $manga->views;
 			$data['rating'] = ['rating' => 1.5, 'votes' => 1, 'enable' => false];
 			$data['artist'] = ['test', 'artist'];

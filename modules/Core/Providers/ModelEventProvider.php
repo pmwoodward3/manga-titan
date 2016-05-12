@@ -29,9 +29,9 @@ class ModelEventProvider extends ServiceProvider {
 					$page->delete();
 				}
 			}
-			if ($manga->thumb_path != '') {
-				if (File::exists(storage_path('image/'.$manga->thumb_path)))
-					File::delete(storage_path('image/'.$manga->thumb_path));
+			if ($manga->thumb != '') {
+				if (File::exists(storage_path('image/'.$manga->thumb)))
+					File::delete(storage_path('image/'.$manga->thumb));
 			}
 		});
 		MangaPage::saving(function ($page) {
@@ -58,29 +58,29 @@ class ModelEventProvider extends ServiceProvider {
 		});
 		Manga::updating(function ($manga) {
 			$oldmanga = $manga->getOriginal();
-			if ($oldmanga['thumb_path'] != $manga->thumb_path && $oldmanga['thumb_path'] != '') {
-				if (File::exists(storage_path('image/'. $oldmanga['thumb_path'])))
-					File::delete(storage_path('image/'. $oldmanga['thumb_path']));
+			if ($oldmanga['thumb'] != $manga->thumb && $oldmanga['thumb'] != '') {
+				if (File::exists(storage_path('image/'. $oldmanga['thumb'])))
+					File::delete(storage_path('image/'. $oldmanga['thumb']));
 			}
 		});
 		Manga::saving(function ($manga) {
-			$filename = preg_replace("/[^a-zA-Z0-9.\-]/", "-", $manga->thumb_path);
-			if ($filename != $manga->thumb_path) {
-				File::move(storage_path('image/'.$manga->thumb_path), storage_path('image/'.$filename));
-				$manga->thumb_path = $filename;
+			$filename = preg_replace("/[^a-zA-Z0-9.\-]/", "-", $manga->thumb);
+			if ($filename != $manga->thumb) {
+				File::move(storage_path('image/'.$manga->thumb), storage_path('image/'.$filename));
+				$manga->thumb = $filename;
 			}
 		});
 		Category::deleting(function ($category) {
-			if ($category->thumb_path != '') {
-				if (File::exists(storage_path('image/'.$category->thumb_path)))
-					File::delete(storage_path('image/'.$category->thumb_path));
+			if ($category->thumb != '') {
+				if (File::exists(storage_path('image/'.$category->thumb)))
+					File::delete(storage_path('image/'.$category->thumb));
 			} 
 		});
 		Category::updating(function ($category) {
 			$old = $category->getOriginal();
-			if ($old['thumb_path'] != $category->thumb_path && $old['thumb_path']!='') {
-				if (File::exists(storage_path('image/'.$old['thumb_path'])))
-					File::delete(storage_path('image/'.$old['thumb_path']));
+			if ($old['thumb'] != $category->thumb && $old['thumb']!='') {
+				if (File::exists(storage_path('image/'.$old['thumb'])))
+					File::delete(storage_path('image/'.$old['thumb']));
 			}
 		});
 	}
