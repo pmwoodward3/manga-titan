@@ -15,7 +15,7 @@
 	transition="expand"
 	class="ui form"
 	v-on:submit="submit"
-	method="post"
+	:method="method"
 	:action="action"
 	>
 		<slot></slot>
@@ -28,6 +28,7 @@
 		props: {
 			name: 			{ required: true, type: String },
 			action: 		{ required: false, type: String, default: null },
+			method:			{ required: false, type: String, default: 'post' },
 			params:			{ required: false, type: Array, default: function () {return [];} },
 			hidden:			{ required: false, type: Boolean, default: false },
 			resetOnSave:	{ required: false, type: Boolean, default: false },

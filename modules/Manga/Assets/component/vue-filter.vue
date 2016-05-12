@@ -1,43 +1,27 @@
 <template>
 	<div class="row">
 		<div class="sixteen wide column">
-			<div class="ui form" v-show="false">
-				<div class="four fields">
+			<div class="ui form" v-show="is_hidden" style="margin-bottom:1em;">
+				<div class="five fields">
 					<div class="field">
 						<label>Search</label>
-						<input type="text">
+						<input type="text" name="keyword">
 					</div>
+					<vue-select name="length" label="Length" placeholder="Length" :values="[
+						{value:'short', text:'1-20 Pages'},
+						{value:'mediun', text:'21-40 Pages'},
+						{value:'long', text:'41-100 Pages'},
+						{value:'mega', text:'100+ Pages'},
+					]"></vue-select>
+					<vue-select name="category" label="Category" value-source="source-category" placeholder="Category"></vue-select>
+					<vue-select name="tags" label="Tags" value-source="source-tags" :multiple="true" placeholder="Tags"></vue-select>
 					<div class="field">
-						<label>Length</label>
-						<select id="length" class="ui length dropdown">
-							<option value="">None</option>
-							<option value="short">1-20 Pages</option>
-							<option value="medium">21-40 Pages</option>
-							<option value="long">41-100 Pages</option>
-							<option value="mega">100++ Pages</option>
-						</select>
-					</div>
-					<div class="field">
-						<label>Release Date</label>
-						<select id="length" class="ui recent dropdown">
-							<option value="">None</option>
-							<option value="today">Today</option>
-							<option value="yesterday">Yesterday</option>
-							<option value="week">1 Week Ago</option>
-							<option value="month">1 Month Ago</option>
-						</select>
-					</div>
-					<div class="field"><label>Tags</label><select class="ui tags dropdown" multiple>
-							<option value="">Tags</option>
-							<option value="Yuri">Yuri</option>
-							<option value="yara">Yara</option>
-							<option value="test">test</option>
-							<option value="a">a</option>
-						</select>
+						<label></label>
+						<button type="submit" class="ui button">Apply</button>
 					</div>
 				</div>
 			</div>
-			<a class="ui button mini right labeled icon right floated"><i class="icon caret down"></i> More Filter</a>
+			<button type="button" class="ui button mini right labeled icon right floated" @click="showFilter"><i class="icon caret down"></i> More Filter</button>
 		</div>
 	</div>
 </template>
@@ -49,8 +33,14 @@
 				manga_length: 12,
 				manga_time: null,
 				manga_keyword: null,
-				manga_tags: []
+				manga_tags: [],
+				is_hidden: false
 			};
+		},
+		methods: {
+			showFilter: function () {
+				this.is_hidden = !this.is_hidden;
+			}
 		},
 		events: {
 			'filter-changed-call': function () {

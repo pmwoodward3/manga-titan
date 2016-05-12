@@ -8,7 +8,7 @@
 @set('routeurl', str_ireplace(['%7B','%7D'],['{','}'], $routeurl))
 @section('content')
 	<div class="twelve wide column">
-		<vue-form name="list" action-refresh="get-manga">
+		<vue-form name="list" action-refresh="get-manga" :prevent-submit="false" method="get">
 			<div class="ui stackable grid manga-grid">
 				<vue-filter></vue-filter>
 				<vue-grid
