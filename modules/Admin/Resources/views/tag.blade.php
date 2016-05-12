@@ -53,6 +53,7 @@ action-save="save-tags"
 		placeholder="Tag Name"></vue-input>
 		<vue-textarea name="desc" label="Description"
 		placeholder="Tag Description"></vue-textarea>
+		<vue-upload name="thumb" :show-preview="true" label="Tag Thumb"></vue-upload>
 	</vue-form-fields>
 </vue-form>
 @endsection

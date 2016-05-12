@@ -1,6 +1,6 @@
 @set('routename', Request::route()->getName())
 
-<div class="ui left demo vertical inverted sidebar labeled icon menu">
+<div class="ui left demo vertical sidebar labeled icon menu">
 	<a class="item {{ ($routename!='admin.home')?:'active' }}" href="{{ route('admin.home') }}"><i class="icon home"></i> Home</a>
 	<a class="item {{ ($routename!='admin.manga')?:'active' }}" href="{{ route('admin.manga') }}"><i class="icon book"></i> Manga</a>
 	<a class="item {{ ($routename!='admin.tag')?:'active' }}" href="{{ route('admin.tag') }}"><i class="icon tags"></i> Tags</a>
