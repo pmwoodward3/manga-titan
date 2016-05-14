@@ -41,16 +41,6 @@ class CreateMangaTable extends Migration {
             $table->foreign('id_uploader')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
 
-        Schema::create('manga_page', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_manga')->unsigned();
-            $table->integer('page_num')->unsigned();
-            $table->string('img_path', 255);
-            $table->timestamps();
-
-            $table->foreign('id_manga')->references('id')->on('manga')->onDelete('CASCADE')->onUpdate('CASCADE');
-        });
-
         Schema::create('rating', function (Blueprint $table){
             $table->increments('id');
             $table->integer('id_manga')->unsigned();
@@ -99,7 +89,6 @@ class CreateMangaTable extends Migration {
         Schema::dropIfExists('commentable');
         Schema::dropIfExists('comment');
         Schema::dropIfExists('rating');
-        Schema::dropIfExists('manga_page');
         Schema::dropIfExists('manga');
         Schema::dropIfExists('category');
         Schema::dropIfExists('config_apps');
