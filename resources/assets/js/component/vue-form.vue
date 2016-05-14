@@ -11,7 +11,7 @@
 <template>
 	<form
 	:id="id"
-	v-show="!isHidden"
+	v-show="! isHidden"
 	transition="expand"
 	class="ui form"
 	v-on:submit="submit"

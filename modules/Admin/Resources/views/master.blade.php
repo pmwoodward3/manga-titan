@@ -20,7 +20,6 @@
 @section('pageContent')
 @include('admin::menubar')
 <app-page url-ajax="{{ route('core.ajax') }}" id="admin-grid">
-	@include('admin::sidebar')
 	<div id="admin-area" class="sixteen wide column">
 		@section('content')
 		<div class="ui grid">
