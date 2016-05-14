@@ -1,47 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
+@section('pageContent')
+<div class="ui container">
+    <div class="ui error">
+        <div class="value red-font">503</div>
+        <div class="detail">
+            <h3>Oops! You're lost.</h3>
+            <p></p>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+<style type="text/css">
+
+    .ui.error .value,
+    .ui.error .detail > h3,
+    .ui.error .detail > p {
+        font-family:"Open Sans",sans-serif;
+        font-weight: 300;
+    }
+
+    .ui.error .value.red-font {
+        color: #e7505a !important;
+        letter-spacing: -10px;
+        line-height: 128px;
+        font-size: 128px;
+    }
+
+</style>
+@endsection

@@ -43,6 +43,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof NotFoundHttpException) {
+            return response(view('errors.404'),404);
+        }
+
         if ($e instanceof TokenMismatchException) {
             if ($request->ajax()) {
                 return response()->json(['data' => csrf_token(),'message' => 'Token Mismatch', 'success' => false]);
