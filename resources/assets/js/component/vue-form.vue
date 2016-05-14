@@ -160,9 +160,16 @@
 					this.$broadcast('clear-field');
 				}
 			},
-			'form-edit': function (data, name, isdetail) {
+			'form-edit': function (data, name) {
 				if (this.name == name) {
-					this.isDetail = isdetail;
+					this.isDetail = false;
+					this.$broadcast('flash-field', data);
+					this.$emit('form-show');
+				}
+			},
+			'form-detail': function (data, name) {
+				if (this.name == name) {
+					this.isDetail = true;
 					this.$broadcast('flash-field', data);
 					this.$emit('form-show');
 				}
@@ -197,11 +204,11 @@
 			////////////////////////////////////
 			'row-detail': function (data) {
 				if (this.targetEdit == null) return;
-				this.$dispatch('form-edit', data, this.targetEdit, true);
+				this.$dispatch('form-detail', data, this.targetEdit);
 			},
 			'row-edit': function (data) {
 				if (this.targetEdit == null) return;
-				this.$dispatch('form-edit', data, this.targetEdit, false);
+				this.$dispatch('form-edit', data, this.targetEdit);
 			},
 			'row-delete': function (data) {
 				if (this.actionDelete == null) return;
