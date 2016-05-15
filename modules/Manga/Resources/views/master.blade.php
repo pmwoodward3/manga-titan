@@ -1,4 +1,5 @@
 @extends('master')
+@set('routename', Request::route()->getName())
 
 @section('pageScript')
 <script src="{{ Module::asset('manga:js/main.js') }}" type="text/javascript"></script>
@@ -21,4 +22,8 @@
 
 @section('pageMenubar')
 @include('manga::menubar')
+@endsection
+
+@section('pageSideMenu')
+@include('manga::sidemenu')
 @endsection

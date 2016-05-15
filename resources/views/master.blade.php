@@ -23,7 +23,7 @@
 
 		<div class="pusher">
 			@section('pageMenu')
-			<div class="ui inverted borderless manga menu">
+			<div class="ui inverted borderless manga fixed menu">
 				<div class="ui container fluid">
 					<div class="header item">
 						<img class="logo" src="{{ asset('logo.png') }}">
@@ -32,10 +32,83 @@
 				</div>
 			</div>
 			@show
-			@yield('pageContent')
+			<div class="ui grid page-body">
+				<div class="page-menu column">
+					<div class="ui vertical icon menu">
+						@yield('pageSideMenu')
+					</div>
+				</div>
+				<div class="page-content column">
+					@yield('pageContent')
+				</div>
+			</div>
 		</div>
 
 		<style>
+			.page-menu .ui.menu {
+				box-shadow: none;
+				background: transparent;
+				border-radius: 0;
+				border: none medium;
+				padding-top:20px;
+				width: 45px;
+			}
+			.page-menu .ui.menu .item:first-child {
+				border-top:none medium;
+			}
+			.page-menu .ui.menu .item {
+				color: #b4bcc8;
+				padding:13px;
+				border-top: 1px solid rgb(61, 73, 87);
+				font-size: 17px;
+				text-align: left;
+				border-radius: 0 !important;
+			}
+			.page-menu .ui.menu .item.active {
+				background-color: #36c6d3;
+				border-top:none medium;
+				margin-top:1px;
+				color:#FFF;
+			}
+			.page-menu .ui.icon.menu .item > .icon:not(.dropdown) {
+				display: inline-block;
+				margin:0;
+				margin-right: 16px;
+			}
+			.page-menu .ui.menu .item > .title {
+				display: none;
+				font-size: 14px;
+				font-weight: 300;
+				font-family: "Open sans", sans-serif;
+			}
+			.page-menu .ui.menu .item.active:hover {
+				background-color: #36c6d3;
+				color:#FFF;
+			}
+			.page-menu .ui.menu .item:hover {
+				background: #2C3542;
+				color:#b4bcc8;
+				width: 245px;
+				z-index: 8;
+			}
+			.page-menu .ui.menu .item:hover > .title {
+				display: inline-block;
+			}
+			.ui.grid.page-body {
+				margin:0;
+				background: rgb(54, 65, 80);
+			}
+			.ui.grid.page-body .column {
+				padding-left: 0;
+				padding-right: 0;
+			}
+			.ui.grid.page-body .page-menu {
+				width:45px;
+			}
+			.ui.grid.page-body .page-content {
+				width: calc(100% - 45px);
+				background: #eef1f5;
+			}
 			.ui.manga.menu {
 				height: 50px;
 				background-color: #2b3643;

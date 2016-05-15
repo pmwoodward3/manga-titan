@@ -1,10 +1,5 @@
 @set('user', Sentinel::getUser())
-@set('routename', Request::route()->getName())
 
-<a href="{{ route('manga.home') }}"			class="item {{ $routename!='manga.home'?'':'active' }}">Home</a>
-<a href="{{ route('manga.category') }}"		class="item {{ $routename!='manga.category'?'':'active' }}">Category</a>
-<a href="{{ route('manga.tags') }}"			class="item {{ $routename!='manga.tags'?'':'active' }}">Tags</a>
-<a href="{{ route('manga.newest') }}"		class="item {{ $routename!='manga.newest'?'':'active' }}">Newest</a>
 <!-- <a href="{{ route('manga.favorite') }}"		class="item {{ $routename!='manga.favorite'?'':'active' }}">My Favorite</a> -->
 <div class="right menu">
 	<a href="" class="item icon"><i class="icon large alarm outline"></i></a>
