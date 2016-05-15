@@ -1,13 +1,17 @@
 @set('user', Sentinel::getUser())
 @set('routename', Request::route()->getName())
 
-<a href="{{ route('manga.home') }}"			class="item {{$routename!='manga.home'?:'active'}}">Home</a>
-<a href="{{ route('manga.category') }}"		class="item {{$routename!='manga.category'?:'active'}}">Category</a>
-<a href="{{ route('manga.tags') }}"			class="item {{$routename!='manga.tags'?:'active'}}">Tags</a>
-<a href="{{ route('manga.newest') }}"		class="item {{$routename!='manga.newest'?:'active'}}">Newest <span class="ui green label">123</span></a>
-<a href="{{ route('manga.favorite') }}"		class="item {{$routename!='manga.favorite'?:'active'}}">My Favorite</a>
+<a href="{{ route('manga.home') }}"			class="item {{ $routename!='manga.home'?'':'active' }}">Home</a>
+<a href="{{ route('manga.category') }}"		class="item {{ $routename!='manga.category'?'':'active' }}">Category</a>
+<a href="{{ route('manga.tags') }}"			class="item {{ $routename!='manga.tags'?'':'active' }}">Tags</a>
+<a href="{{ route('manga.newest') }}"		class="item {{ $routename!='manga.newest'?'':'active' }}">Newest</a>
+<!-- <a href="{{ route('manga.favorite') }}"		class="item {{ $routename!='manga.favorite'?'':'active' }}">My Favorite</a> -->
 <div class="right menu">
+	<a href="" class="item icon"><i class="icon large alarm outline"></i></a>
+	<a href="" class="item icon"><i class="icon large mail outline"></i></a>
+	<a href="" class="item icon"><i class="icon large calendar outline"></i></a>
 	<div class="ui pointing dropdown menubar link item">
+		<img src="{{ url('manga/image/thumb/dummy-user.png') }}" class="ui user image circular">
 		<span class="text">{{ $user->first_name }} {{ $user->last_name }}</span>
 		<i class="dropdown icon"></i>
 		<div class="menu">
@@ -20,4 +24,11 @@
 			<a href="{{ route('user.logout') }}" class="item">Log Out</a>
 		</div>
 	</div>
+	<a href="" class="item icon"><i class="icon large sign out"></i></a>
 </div>
+<style>
+	.ui.user.image {
+		height: 29px;
+		margin-right: 5px;
+	}
+</style>

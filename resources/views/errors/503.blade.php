@@ -11,7 +11,10 @@
     </div>
 </div>
 <style type="text/css">
-
+    .ui.error {
+        margin-bottom: 104px;
+        margin-top:90px;
+    }
     .ui.error .value,
     .ui.error .detail > h3,
     .ui.error .detail > p {

@@ -8,7 +8,8 @@
 		<title>@section('title') Manga Titan @show</title>
 		<link rel="stylesheet" href="{{ asset('css/semantic.min.css')}}">
 		<link rel="stylesheet" href="{{ asset('css/app.css')}}">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'>
+		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'> -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" type="text/css">
 		<script src="{{ asset('js/jquery-2.2.2.min.js')}}"></script>
 		<script src="{{ asset('js/semantic.min.js')}}"></script>
 		<script src="{{ asset('js/vue.js')}}"></script>
@@ -22,11 +23,10 @@
 
 		<div class="pusher">
 			@section('pageMenu')
-			<div class="ui borderless manga menu">
-				<div class="ui container">
+			<div class="ui inverted borderless manga menu">
+				<div class="ui container fluid">
 					<div class="header item">
 						<img class="logo" src="{{ asset('logo.png') }}">
-						Manga Titan
 					</div>
 					@yield('pageMenubar')
 				</div>
@@ -34,6 +34,23 @@
 			@show
 			@yield('pageContent')
 		</div>
+
+		<style>
+			.ui.manga.menu {
+				height: 50px;
+				background-color: #2b3643;
+				font-family: "Open sans", sans-serif;
+				font-weight: 300;
+				font-size: 13px;
+			}
+			.ui.manga.menu .item {
+				color:rgb(198, 207, 218);
+			}
+			.ui.manga.menu img.logo{
+				height:14px;
+				width:auto;
+			}
+		</style>
 
 		<script>
 			var vue;
