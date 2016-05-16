@@ -4,10 +4,22 @@
 @parent - Home
 @endsection
 
+@section('breadcrumb')
+<a href="#" class="section">Home</a>
+@endsection
+
+@section('page-header')
+Manga List
+@endsection
+
+@section('page-subheader')
+Read Manga Online
+@endsection
+
 @set('routeurl',route('manga.desc','{id}'))
 @set('routeurl', str_ireplace(['%7B','%7D'],['{','}'], $routeurl))
 @section('content')
-	<div class="twelve wide column">
+	<div class="eleven wide column">
 		<div class="portlet light bordered">
 			<vue-form name="list" action-refresh="get-manga" :prevent-submit="false" method="get">
 				<div class="ui stackable grid manga-grid">
@@ -23,13 +35,18 @@
 			</vue-form>
 		</div>
 	</div>
-	<div class="four wide column">
+	<div class="five wide column">
 		<div class="ui one column grid">
 			<div class="row">
 				<div class="column">
 					<div class="portlet light bordered">
-						<h4 class="ui dividing header">Tags</h4>
-						<div class="ui small tag labels">
+						<div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+								<i class="icon tag font-dark"></i>
+                <span class="caption-subject font-dark bold">Tags</span>
+              </div>
+            </div>
+						<div class="ui small labels tags">
 							<a href="" class="ui red label">Yaoi</a>
 							<a href="" class="ui orange label">Yuri</a>
 							<a href="" class="ui yellow label">Big Tits</a>
@@ -49,7 +66,12 @@
 			<div class="row">
 				<div class="column">
 					<div class="portlet light bordered">
-						<h4 class="ui dividing header">Most Popular</h4>
+						<div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+								<i class="icon tag font-dark"></i>
+                <span class="caption-subject font-dark bold">Most Popular</span>
+              </div>
+            </div>
 						<div class="ui middle aligned selection divided list manga-side-list">
 							<div class="item" v-for="i in 5">
 								<div class="right floated content">
@@ -70,7 +92,12 @@
 			<div class="row">
 				<div class="column">
 					<div class="portlet light bordered">
-						<h4 class="ui dividing header">Newest Manga</h4>
+						<div class="portlet-title tabbable-line">
+              <div class="caption caption-md">
+								<i class="icon tag font-dark"></i>
+                <span class="caption-subject font-dark bold">Newest Manga</span>
+              </div>
+            </div>
 						<div class="ui middle aligned selection divided list manga-side-list">
 							<div class="item" v-for="i in 5">
 								<!-- <div class="right floated content">

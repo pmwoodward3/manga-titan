@@ -16,17 +16,30 @@
 
 @section('pageContent')
 <app-page url-ajax="{{ route('core.ajax') }}" :class="['container']">
-	@include('users::leftmenu')
-	<div class="twelve wide column">
+	<div class="sixteen wide column">
 		@yield('content')
 	</div>
 </app-page>
+@endsection
+
+@section('pageSideMenu')
+@include('users::sidemenu')
 @endsection
 
 @section('pageMenubar')
 @include('users::menubar')
 @endsection
 
-@section('pageFooter')
+@section('page-header')
+Profile
+@endsection
 
+@section('page-subheader')
+My Profile
+@endsection
+
+@section('breadcrumb')
+<a class="section">Home</a>
+<i class="circle icon divider"></i>
+<a class="section">Profile</a>
 @endsection

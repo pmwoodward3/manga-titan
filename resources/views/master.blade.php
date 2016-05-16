@@ -38,18 +38,9 @@
 						@yield('pageSideMenu')
 					</div>
 				</div>
-				<div class="page-content light column">
-					<div class="page-bar">
-						<div class="ui breadcrumb">
-						  <a class="section">Home</a>
-						  <i class="circle icon divider"></i>
-						  <a class="section">Registration</a>
-						</div>
-					</div>
-					<h3 class="page-title">
-						Home Page | Page
-						<small>Test page gor hie</small>
-					</h3>
+				<div class="page-content column">
+					@include('breadcrumb')
+					@include('header')
 					@yield('pageContent')
 				</div>
 			</div>
@@ -99,6 +90,41 @@
 				padding: 12px 20px 15px;
 				background-color: #fff;
 			}
+			.portlet > .portlet-title {
+				min-height: 41px;
+				margin-bottom: 10px;
+			}
+			.portlet > .portlet-title > .caption {
+			    float: left;
+			    display: inline-block;
+			    font-size: 18px;
+			    line-height: 18px;
+			    padding: 10px 0;
+			}
+			.portlet.light > .portlet-title > .caption {
+			    color: #666;
+			    padding: 10px 0;
+					font-family: "Open sans", sans-serif;
+			}
+			.portlet.light > .portlet-title > .caption > i {
+			    color: #777;
+			    font-size: 15px;
+			    font-weight: 300;
+			    margin-top: 3px;
+			}
+			.portlet.light > .portlet-title > .caption > .caption-subject {
+			    font-size: 16px;
+			}
+			.font-dark {
+			    color: #2f353b !important;
+			}
+			.uppercase {
+				text-transform: uppercase;
+			}
+			.portlet.light > .portlet-title {
+				border-bottom: 1px solid #eef1f5;
+				min-height: 48px;
+			}
 			.portlet.light.bordered {
 				border:1px solid #e7ecf1 !important;
 			}
@@ -120,6 +146,10 @@
 				font-size: 17px;
 				text-align: left;
 				border-radius: 0 !important;
+			}
+			.page-menu .ui.menu .divider {
+				padding-top:20px;
+				padding-bottom: 20px;
 			}
 			.page-menu .ui.menu .item.active {
 				background-color: #36c6d3;
@@ -185,6 +215,13 @@
 			.ui.manga.menu img.logo{
 				height:14px;
 				width:auto;
+			}
+			.ui.small.labels.tags > .ui.label {
+				border-radius: 0;
+				font-family: "Open sans", sans-serif;
+				font-size: 14px;
+				font-weight: 300;
+				line-height: 14px;
 			}
 		</style>
 
