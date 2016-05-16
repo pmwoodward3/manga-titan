@@ -7,8 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>@section('title') Manga Titan @show</title>
 		<link rel="stylesheet" href="{{ asset('css/semantic.css')}}">
-		<!-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> -->
-		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'> -->
+		<link rel="stylesheet" href="{{ asset('css/app.css')}}">
 		<script src="{{ asset('js/jquery-2.2.2.min.js')}}"></script>
 		<script src="{{ asset('js/semantic.min.js')}}"></script>
 		<script src="{{ asset('js/vue.js')}}"></script>

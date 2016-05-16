@@ -47,18 +47,7 @@ Read Manga Online
               </div>
             </div>
 						<div class="ui labels tags">
-							<a href="" class="ui red label">Yaoi</a>
-							<a href="" class="ui orange label">Yuri</a>
-							<a href="" class="ui yellow label">Big Tits</a>
-							<a href="" class="ui olive label">Yaoi</a>
-							<a href="" class="ui green label">Yaoi</a>
-							<a href="" class="ui teal label">Yaoi</a>
-							<a href="" class="ui blue label">Yaoi</a>
-							<a href="" class="ui violet label">Yaoi</a>
-							<a href="" class="ui purple label">Yaoi</a>
-							<a href="" class="ui pink label">Yaoi</a>
-							<a href="" class="ui brown label">Yaoi</a>
-							<a href="" class="ui label">Yaoi</a>
+							<a href="#" class="ui red label">Yaoi</a>
 						</div>
 					</div>
 				</div>
