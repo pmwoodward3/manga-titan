@@ -46,7 +46,7 @@ Read Manga Online
                 <span class="caption-subject font-dark bold">Tags</span>
               </div>
             </div>
-						<div class="ui small labels tags">
+						<div class="ui labels tags">
 							<a href="" class="ui red label">Yaoi</a>
 							<a href="" class="ui orange label">Yuri</a>
 							<a href="" class="ui yellow label">Big Tits</a>

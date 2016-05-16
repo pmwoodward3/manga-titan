@@ -6,10 +6,9 @@
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>@section('title') Manga Titan @show</title>
-		<link rel="stylesheet" href="{{ asset('css/semantic.min.css')}}">
-		<link rel="stylesheet" href="{{ asset('css/app.css')}}">
+		<link rel="stylesheet" href="{{ asset('css/semantic.css')}}">
+		<!-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> -->
 		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'> -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" type="text/css">
 		<script src="{{ asset('js/jquery-2.2.2.min.js')}}"></script>
 		<script src="{{ asset('js/semantic.min.js')}}"></script>
 		<script src="{{ asset('js/vue.js')}}"></script>
@@ -215,13 +214,6 @@
 			.ui.manga.menu img.logo{
 				height:14px;
 				width:auto;
-			}
-			.ui.small.labels.tags > .ui.label {
-				border-radius: 0;
-				font-family: "Open sans", sans-serif;
-				font-size: 14px;
-				font-weight: 300;
-				line-height: 14px;
 			}
 		</style>
 
