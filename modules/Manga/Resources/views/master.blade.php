@@ -11,7 +11,7 @@
 @endsection
 
 @section('pageContent')
-<app-page url-ajax="{{ route('core.ajax') }}" :class="['container']">
+<app-page url-ajax="{{ route('core.ajax') }}">
 	@yield('content')
 </app-page>
 @endsection
