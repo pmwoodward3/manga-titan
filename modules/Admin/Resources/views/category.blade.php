@@ -4,6 +4,20 @@
 @parent - Category
 @endsection
 
+@section('breadcrumb')
+<a href="{{ route('admin.home') }}" class="section">Home</a>
+<i class="icon circle divider"></i>
+<a href="#" class="section">Category</a>
+@endsection
+
+@section('page-header')
+Category Management
+@endsection
+
+@section('page-subheader')
+category management
+@endsection
+
 @section('left-side-content')
 <vue-form
 name="category-list"

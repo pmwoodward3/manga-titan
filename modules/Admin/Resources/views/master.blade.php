@@ -18,7 +18,6 @@
 @endsection
 
 @section('pageContent')
-@include('admin::menubar')
 <app-page url-ajax="{{ route('core.ajax') }}" id="admin-grid">
 	<div id="admin-area" class="sixteen wide column">
 		@section('content')
@@ -38,5 +37,14 @@
 </app-page>
 @endsection
 
-@section('pageFooter')
+@section('pageMenu')
+@parent
+@endsection
+
+@section('pageMenubar')
+@include('admin::menubar')
+@endsection
+
+@section('pageSideMenu')
+@include('admin::sidemenu')
 @endsection

@@ -4,6 +4,20 @@
 @parent - Manga
 @endsection
 
+@section('breadcrumb')
+<a href="{{ route('admin.home') }}" class="section">Home</a>
+<i class="icon circle divider"></i>
+<a href="#" class="section">Manga</a>
+@endsection
+
+@section('page-header')
+Manga Management
+@endsection
+
+@section('page-subheader')
+manga management
+@endsection
+
 @set('routeurl',route('admin.page','{id}'))
 @set('routeurl', str_ireplace(['%7B','%7D'],['{','}'], $routeurl))
 @section('left-side-content')

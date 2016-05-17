@@ -4,13 +4,28 @@
 @parent - Users
 @endsection
 
+@section('breadcrumb')
+<a href="{{ route('admin.home') }}" class="section">Home</a>
+<i class="icon circle divider"></i>
+<a href="#" class="section">Users</a>
+@endsection
+
+@section('page-header')
+Users
+@endsection
+
+@section('page-subheader')
+user control
+@endsection
+
 @section('left-side-content')
 <vue-form
 name="user-list"
 target-add="user-form"
 target-edit="user-form"
 action-refresh="get-user"
-action-delete="delete-user">
+action-delete="delete-user"
+:class="['accordion', 'styled']">
 	<vue-form-title
 	title="Users Control"
 	icon="users"
@@ -19,9 +34,9 @@ action-delete="delete-user">
 	:button-delete="true"
 	></vue-form-title>
 
-	<div class="ui segment form-content">
+	<div class="content active">
 		<vue-table
-		:class="['very','basic','selectable','form-table']"
+		:class="['selectable']"
 		:can-edit="true"
 		:can-delete="true"
 		:maps="[

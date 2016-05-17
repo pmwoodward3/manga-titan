@@ -4,6 +4,18 @@
 @parent - Home
 @endsection
 
+@section('breadcrumb')
+<a href="#" class="section">Home</a>
+@endsection
+
+@section('page-header')
+Dashboard
+@endsection
+
+@section('page-subheader')
+dashboard & statistics
+@endsection
+
 @section('left-side-content')
 <vue-tab
 name="home"

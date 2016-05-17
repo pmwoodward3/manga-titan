@@ -4,6 +4,20 @@
 @parent - Tags
 @endsection
 
+@section('breadcrumb')
+<a href="{{ route('admin.home') }}" class="section">Home</a>
+<i class="icon circle divider"></i>
+<a href="#" class="section">Tags</a>
+@endsection
+
+@section('page-header')
+Tag Management
+@endsection
+
+@section('page-subheader')
+tag management
+@endsection
+
 @section('left-side-content')
 <vue-form
 name="tag-list"

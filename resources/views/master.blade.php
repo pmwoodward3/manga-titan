@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>@section('title') Manga Titan @show</title>
 		<link rel="stylesheet" href="{{ asset('css/semantic.css')}}">
-		<link rel="stylesheet" href="{{ asset('css/app.css')}}">
+		<!-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> -->
 		<script src="{{ asset('js/jquery-2.2.2.min.js')}}"></script>
 		<script src="{{ asset('js/semantic.min.js')}}"></script>
 		<script src="{{ asset('js/vue.js')}}"></script>
@@ -15,6 +15,16 @@
 		@yield('pageStyle')
 		<!--============================ Page Script Here   ===========================-->
 		@yield('pageScript')
+		<style>
+			.ui.user.image {
+				height: 29px;
+				margin-right: 5px;
+			}
+			.ui.menu .dropdown.item .menu {
+				border-radius: 0;
+				box-shadow: 5px 5px rgba(102,102,102,.1);
+			}
+		</style>
 	</head>
 	<body>
 		@yield('sidebar')

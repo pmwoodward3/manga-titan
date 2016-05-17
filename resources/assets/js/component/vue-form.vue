@@ -17,6 +17,7 @@
 	v-on:submit="submit"
 	:method="method"
 	:action="action"
+	:class="class"
 	>
 		<slot></slot>
 		<input type="hidden" :name="item.name" :value="item.value" v-for="item in params">
@@ -29,6 +30,7 @@
 			name: 			{ required: true, type: String },
 			action: 		{ required: false, type: String, default: null },
 			method:			{ required: false, type: String, default: 'post' },
+			class: 			{ required: false, type: Array, default: function () {return [];} },
 			params:			{ required: false, type: Array, default: function () {return [];} },
 			hidden:			{ required: false, type: Boolean, default: false },
 			resetOnSave:	{ required: false, type: Boolean, default: false },

@@ -22187,12 +22187,12 @@ Floated Menu / Item
   background: #F9FAFB;
   text-align: inherit;
   color: #2f353b;
-  padding: 0.92857143em 0.71428571em;
+  padding: 8px 8px;
   vertical-align: inherit;
   font-style: none;
-  font-weight: bold;
+  font-weight: 600;
   text-transform: none;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  border-bottom: 1px solid #e7ecf1;
   border-left: none;
 }
 
@@ -22224,7 +22224,7 @@ Floated Menu / Item
   background: #F9FAFB;
   text-align: inherit;
   color: #2f353b;
-  padding: 0.71428571em 0.71428571em;
+  padding: 8px 8px;
   vertical-align: middle;
   font-style: normal;
   font-weight: normal;
@@ -22250,7 +22250,7 @@ Floated Menu / Item
 /* Table Row */
 
 .ui.table tr td {
-  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  border-top: 1px solid #e7ecf1;
 }
 
 .ui.table tr:first-child td {
@@ -22260,7 +22260,7 @@ Floated Menu / Item
 /* Table Cells */
 
 .ui.table td {
-  padding: 0.71428571em 0.71428571em;
+  padding: 8px 8px;
   text-align: inherit;
 }
 
@@ -22383,8 +22383,8 @@ Floated Menu / Item
 
 .ui.structured.celled.table tr th,
 .ui.structured.celled.table tr td {
-  border-left: 1px solid rgba(34, 36, 38, 0.1);
-  border-right: 1px solid rgba(34, 36, 38, 0.1);
+  border-left: 1px solid #e7ecf1;
+  border-right: 1px solid #e7ecf1;
 }
 
 /*--------------
@@ -22668,7 +22668,7 @@ Floated Menu / Item
 .ui.table tbody tr td.selectable > a:not(.ui) {
   display: block;
   color: inherit;
-  padding: 0.71428571em 0.71428571em;
+  padding: 8px 8px;
 }
 
 /* Other States */
@@ -23295,7 +23295,7 @@ Floated Menu / Item
 
 .ui.celled.table tr th,
 .ui.celled.table tr td {
-  border-left: 1px solid rgba(34, 36, 38, 0.1);
+  border-left: 1px solid #e7ecf1;
 }
 
 .ui.celled.table tr th:first-child,
@@ -26501,7 +26501,7 @@ a.ui.card:hover,
 .ui.accordion:not(.styled) .title ~ .content:not(.ui),
 .ui.accordion:not(.styled) .accordion .title ~ .content:not(.ui) {
   margin: '';
-  padding: 0.5em 0em 1em;
+  padding: 8px 20px 15px 20px;
 }
 
 .ui.accordion:not(.styled) .title ~ .content:not(.ui):last-child {
@@ -26609,12 +26609,12 @@ a.ui.card:hover,
 .ui.styled.accordion .content,
 .ui.styled.accordion .accordion .content {
   margin: 0em;
-  padding: 0.5em 1em 1.5em;
+  padding: 8px 20px 15px 20px;
 }
 
 .ui.styled.accordion .accordion .content {
   padding: 0em;
-  padding: 0.5em 1em 1.5em;
+  padding: 8px 20px 15px 20px;
 }
 
 /* Hover */
@@ -26718,7 +26718,27 @@ a.ui.card:hover,
   min-height: 60px;
 }
 
-.ui.accordion .title .icon:before,
+.ui.accordion .accordion .title .caption,
+.ui.accordion .title .caption {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+}
+
+.ui.accordion .accordion .title .action,
+.ui.accordion .title .action {
+  display: inline-block;
+  float: right;
+}
+
+.ui.accordion .title .ui.button {
+  padding: 4px 10px;
+  border-radius: 25px;
+  line-height: 19.5px;
+  font-size: 13px;
+}
+
+.ui.accordion .title .icon,
 .ui.accordion .accordion .title .icon {
   font-size: 15px;
   margin-top: 3px;
@@ -26798,7 +26818,7 @@ a.ui.card:hover,
   height: 17px;
   content: '';
   background: #FFFFFF;
-  border-radius: 0.21428571rem;
+  border-radius: 0px;
   -webkit-transition: border 0.1s ease, opacity 0.1s ease, box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;

@@ -1,5 +1,23 @@
 @extends('admin::master')
 
+@section('title')
+@parent - Comments
+@endsection
+
+@section('breadcrumb')
+<a href="{{ route('admin.home') }}" class="section">Home</a>
+<i class="icon circle divider"></i>
+<a href="#" class="section">Comment</a>
+@endsection
+
+@section('page-header')
+Comments
+@endsection
+
+@section('page-subheader')
+user comments
+@endsection
+
 @section('left-side-content')
 <vue-form
 name="comment-list"

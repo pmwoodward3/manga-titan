@@ -1,5 +1,5 @@
 <template>
-<div class="ui secondary segment form-title">
+<!-- <div class="ui secondary segment form-title">
 	<div class="title"><i class="icon" :class="icon"></i> {{ title }}</div>
 	<div class="control">
 		<div class="ui small icon buttons">
@@ -12,6 +12,10 @@
 			<slot name="right"></slot>
 		</div>
 	</div>
+</div> -->
+<div class="title active">
+	<div class="caption"><i class="icon" :class="icon"></i><span>{{ title }}</span></div>
+	<div class="action"><button class="ui basic button">Action</button></div>
 </div>
 </template>
 
