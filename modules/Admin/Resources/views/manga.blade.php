@@ -31,10 +31,11 @@ name="home"
 <vue-tab-content data-tab="manga" :active="true">
 	<vue-form
 	name="manga-list"
-	target-add="chapter-list"
+	target-add="manga-form"
 	target-edit="manga-form"
 	action-refresh="get-manga"
-	action-delete="delete-manga">
+	action-delete="delete-manga"
+	:class="['accordion', 'styled', 'fluid']">
 		<vue-form-title
 		title="Manga List"
 		icon="book"
@@ -42,7 +43,7 @@ name="home"
 		:button-refresh="true"
 		:button-delete="true"
 		></vue-form-title>
-		<div class="ui segment form-content">
+		<div class="content active">
 			<vue-table
 			:href="{
 			detail:{enable:true,format:'{!! $routeurl !!}'},
@@ -62,7 +63,6 @@ name="home"
 			]"
 			></vue-table>
 		</div>
-		<vue-form-footer></vue-form-footer>
 	</vue-form>
 </vue-tab-content>
 <vue-tab-content data-tab="chapter">
@@ -71,7 +71,8 @@ name="home"
 	target-add="manga-form"
 	target-edit="manga-form"
 	action-refresh="get-manga"
-	action-delete="delete-manga">
+	action-delete="delete-manga"
+	:class="['accordion', 'styled', 'fluid']">
 		<vue-form-title
 		title="Manga List"
 		icon="book"
@@ -79,7 +80,7 @@ name="home"
 		:button-refresh="true"
 		:button-delete="true"
 		></vue-form-title>
-		<div class="ui segment form-content">
+		<div class="content active">
 			<vue-table
 			:href="{
 			detail:{enable:true,format:'{!! $routeurl !!}'},
@@ -98,7 +99,6 @@ name="home"
 			]"
 			></vue-table>
 		</div>
-		<vue-form-footer></vue-form-footer>
 	</vue-form>
 </vue-tab-content>
 <vue-tab-content data-tab="page"></vue-tab-content>
@@ -108,14 +108,16 @@ name="home"
 <vue-form
 name="manga-form"
 action-save="save-manga"
-:hidden="true">
+:hidden="true"
+:class="['accordion', 'styled', 'fluid']">
 	<vue-form-title
 	title="Manga Form"
 	icon="book"
 	:button-save="true"
 	:button-cancel="true"
+	:page="false"
 	></vue-form-title>
-	<vue-form-fields>
+	<div class="content active">
 		<vue-input name="id" type="hidden"></vue-input>
 		<vue-input name="title" label="Manga Title" placeholder="Manga Title"></vue-input>
 
@@ -124,6 +126,6 @@ action-save="save-manga"
 		<vue-select name="tags" label="Tags" value-source="source-tags" :multiple="true" :allow-add="true" placeholder="Select Tags"></vue-select>
 		
 		<vue-upload name="thumb" label="Manga Thumbnail" :show-preview="true"></vue-upload>
-	</vue-form-fields>
+	</div>
 </vue-form>
 @endsection

@@ -697,7 +697,7 @@ input::selection {
   padding: 0.78571429em 1.5em 0.78571429em;
   text-transform: none;
   text-shadow: none;
-  font-weight: bold;
+  font-weight: 300;
   line-height: 1em;
   font-style: normal;
   text-align: center;
@@ -1462,7 +1462,7 @@ input::selection {
 .ui.basic.button {
   background: transparent none !important;
   color: rgba(0, 0, 0, 0.6) !important;
-  font-weight: normal;
+  font-weight: 300;
   border-radius: 0px;
   text-transform: none;
   text-shadow: none !important;
@@ -4446,6 +4446,10 @@ input::selection {
 /*******************************
          Theme Overrides
 *******************************/
+
+.ui.button > .right.icon:not(.button) {
+  margin: 0em -2px 0em 2px;
+}
 
 /*******************************
          Site Overrides
@@ -26703,6 +26707,11 @@ a.ui.card:hover,
   text-align: center;
 }
 
+.ui.accordion .active.content,
+.ui.accordion .accordion .active.content {
+  min-height: 100px;
+}
+
 .ui.accordion .title .dropdown.icon:before,
 .ui.accordion .accordion .title .dropdown.icon:before {
   content: '\f0da' ;
@@ -26731,6 +26740,7 @@ a.ui.card:hover,
   float: right;
 }
 
+.ui.accordion .accordion .title .ui.button,
 .ui.accordion .title .ui.button {
   padding: 4px 10px;
   border-radius: 25px;
@@ -26738,8 +26748,18 @@ a.ui.card:hover,
   font-size: 13px;
 }
 
-.ui.accordion .title .icon,
-.ui.accordion .accordion .title .icon {
+.ui.accordion .accordion .title .ui.very.basic.button,
+.ui.accordion .title .ui.very.basic.button {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.ui.accordion .title .action a {
+  color: #B8B8B8;
+}
+
+.ui.accordion .title .caption > .icon,
+.ui.accordion .accordion .title .caption > .icon {
   font-size: 15px;
   margin-top: 3px;
 }

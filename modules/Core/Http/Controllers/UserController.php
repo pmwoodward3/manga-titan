@@ -12,7 +12,7 @@ class UserController extends Controller implements AjaxResponse {
 	
 	public static function getData($data) {
 		$resdata = [];$coldata = [];
-		$page_num = (array_key_exists('page_num', $data) && intval($data['page_num']) > 0)?intval($data['page_num']):1;
+		$page_num = (! is_null($data) && array_key_exists('page_num', $data) && intval($data['page_num']) > 0)?intval($data['page_num']):1;
 
 		$users = Users::all();
 		$max_page = ceil($users->count() / 10);

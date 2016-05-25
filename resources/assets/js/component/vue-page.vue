@@ -2,9 +2,9 @@
 	<input name="page_num" type="hidden" v-model="page_num">
 	<input name="max_page" type="hidden" v-model="max_page">
 	<div class="ui mini buttons">
-		<button type="button" :disabled="page_num <= 1" @click="prevPage" class="ui blue icon button"><i class="left chevron icon"></i></button>
-		<button type="button" :disabled="max_page == 0" class="ui blue basic button">1</button>
-		<button type="button" :disabled="page_num >= max_page" @click="nextPage" class="ui blue icon button"><i class="right chevron icon"></i></button>
+		<button type="button" :disabled="page_num <= 1" @click="prevPage" class="ui icon very basic button"><i class="left angle icon"></i></button>
+		<button type="button" :disabled="max_page == 0" class="ui very basic button">1</button>
+		<button type="button" :disabled="page_num >= max_page" @click="nextPage" class="ui icon very basic button"><i class="right angle icon"></i></button>
 	</div>
 </template>
 

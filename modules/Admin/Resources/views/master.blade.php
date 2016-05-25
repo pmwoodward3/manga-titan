@@ -22,14 +22,11 @@
 	<div id="admin-area" class="sixteen wide column">
 		@section('content')
 		<div class="ui grid">
-			<div class="ten wide column form-admin" id="admin-side-left">
+			<div class="eight wide column form-admin" id="admin-side-left">
 				@yield('left-side-content')
 			</div>
-			<div class="six wide column form-admin" id="admin-side-right">
+			<div class="eight wide column form-admin" id="admin-side-right">
 				@yield('right-side-content')
-				@section('empty')
-				@include('admin::empty')
-				@show
 			</div>
 		</div>
 		@show

@@ -240,7 +240,6 @@
 				$('.blurring.image').dimmer({on: 'hover'});
 				$('.ui.rating').rating({maxRating:5});
 				$('.ui.progress').progress();
-				$('.ui.fluid.accordion').accordion();
 			});
 		</script>
 		@section('pageFooter')

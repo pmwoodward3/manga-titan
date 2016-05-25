@@ -1,21 +1,16 @@
 <template>
-<!-- <div class="ui secondary segment form-title">
-	<div class="title"><i class="icon" :class="icon"></i> {{ title }}</div>
-	<div class="control">
-		<div class="ui small icon buttons">
-			<slot name="left"></slot>
-			<button type="button" v-if="buttonAdd" class="ui blue button" @click="addClick"><i class="icon plus"></i></button>
-			<button type="button" v-if="buttonRefresh" class="ui blue button" @click="refreshClick"><i class="icon refresh"></i></button>
-			<button type="button" v-if="buttonSave" class="ui blue button" @click="saveClick"><i class="icon save"></i></button>
-			<button type="button" v-if="buttonDelete" class="ui red button" @click="deleteClick"><i class="icon trash"></i></button>
-			<button type="button" v-if="buttonCancel" class="ui red button" @click="cancelClick"><i class="icon share"></i></button>
-			<slot name="right"></slot>
-		</div>
-	</div>
-</div> -->
 <div class="title active">
-	<div class="caption"><i class="icon" :class="icon"></i><span>{{ title }}</span></div>
-	<div class="action"><button class="ui basic button">Action</button></div>
+	<div class="caption"><i class="icon" :class="icon" v-if="icon != null"></i><span>{{ title }}</span></div>
+	<div class="ui action buttons">
+		<slot name="left"></slot>
+		<vue-page v-if="page"></vue-page>
+		<a class="ui icon very basic button" v-if="buttonAdd" @click="addClick"><i class="icon plus"></i></a>
+		<a class="ui icon very basic button" v-if="buttonRefresh" @click="refreshClick"><i class="icon refresh"></i></a>
+		<a class="ui icon very basic button" v-if="buttonSave" @click="saveClick"><i class="icon save"></i></a>
+		<a class="ui icon very basic button" v-if="buttonDelete" @click="deleteClick"><i class="icon trash"></i></a>
+		<a class="ui icon very basic button" v-if="buttonCancel" @click="cancelClick"><i class="icon share"></i></a>
+		<slot name="right"></slot>
+	</div>
 </div>
 </template>
 
@@ -28,7 +23,8 @@
 			buttonRefresh: { required:false, type:Boolean, default: false },
 			buttonCancel: { required:false, type:Boolean, default: false },
 			title: { required: true, type:String },
-			icon: { required: false, type:String, default: null }
+			icon: { required: false, type:String, default: null },
+			page: { required: false, type:Boolean, default: true }
 		},
 		methods: {
 			addClick: function () {
