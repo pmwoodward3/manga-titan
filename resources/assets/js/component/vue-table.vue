@@ -11,7 +11,7 @@
 			<tr v-for="row in rows">
 				<td class="collapsing" v-if="withCheck">
 					<div class="ui fitted checkbox">
-						<input type="checkbox" :name="namecheck" :value="row[id]" v-model="check_list">
+						<input type="checkbox" :name="namecheck" :value="row[id]" v-model="checks">
 						<label></label>
 					</div>
 				</td>

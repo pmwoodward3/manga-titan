@@ -1,9 +1,7 @@
 @set('user', Sentinel::getUser())
 
-<!-- <a href="{{ route('manga.favorite') }}"		class="item {{ $routename!='manga.favorite'?'':'active' }}">My Favorite</a> -->
 <div class="right menu">
 	<a href="" class="item icon"><i class="icon large alarm outline"></i></a>
-	<!-- <a href="" class="item icon"><i class="icon large mail outline"></i></a> -->
 	<a href="" class="item icon"><i class="icon large calendar"></i></a>
 	<div class="ui pointing dropdown menubar link item">
 		<img src="{{ url('manga/image/thumb/dummy-user.png') }}" class="ui user image circular">
@@ -22,13 +20,3 @@
 	</div>
 	<a href="" class="item icon"><i class="icon large sign out"></i></a>
 </div>
-<style>
-	.ui.user.image {
-		height: 29px;
-		margin-right: 5px;
-	}
-	.ui.menu .dropdown.item .menu {
-		border-radius: 0;
-		box-shadow: 5px 5px rgba(102,102,102,.1);
-	}
-</style>

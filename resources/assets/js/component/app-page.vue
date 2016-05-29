@@ -97,6 +97,7 @@
 			'title-change': function (title) {return this.appTitle(title);},
 		},
 		ready: function () {
+			$('.ui.fluid.accordion').accordion({selector: {trigger   : '.title .caption'}});
 		}
 	}
 </script>

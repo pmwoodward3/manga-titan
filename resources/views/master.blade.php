@@ -7,8 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>@section('title') Manga Titan @show</title>
 		<link rel="stylesheet" href="{{ asset('css/semantic.css')}}">
-		<!-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> -->
-		<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'> -->
+		<link rel="stylesheet" href="{{ asset('css/app.css')}}">
 		<script src="{{ asset('js/jquery-2.2.2.min.js')}}"></script>
 		<script src="{{ asset('js/semantic.min.js')}}"></script>
 		<script src="{{ asset('js/vue.js')}}"></script>
@@ -16,6 +15,16 @@
 		@yield('pageStyle')
 		<!--============================ Page Script Here   ===========================-->
 		@yield('pageScript')
+		<style>
+			.ui.user.image {
+				height: 29px;
+				margin-right: 5px;
+			}
+			.ui.menu .dropdown.item .menu {
+				border-radius: 0;
+				box-shadow: 5px 5px rgba(102,102,102,.1);
+			}
+		</style>
 	</head>
 	<body>
 		@yield('sidebar')
@@ -56,19 +65,6 @@
 			.page-bar .ui.breadcrumb {
 				padding: 11px 0;
 			}
-			.page-bar .ui.breadcrumb .icon.divider {
-				font-size: 5px;
-				margin: 0 5px;
-				position: relative;
-				top: -3px;
-				opacity: .4;
-			}
-			.page-bar .ui.breadcrumb .section {
-				color: #888;
-				font-family: "Open Sans",sans-serif;
-				font-size: 14px;
-				line-height: 20px;
-			}
 			h3.page-title {
 				font-size: 24px;
 				font-family: "Open Sans",sans-serif;
@@ -85,47 +81,12 @@
 			    font-weight: 300;
 			    color: #888;
 			}
-			.portlet.light {
-				padding: 12px 20px 15px;
-				background-color: #fff;
-			}
-			.portlet > .portlet-title {
-				min-height: 41px;
-				margin-bottom: 10px;
-			}
-			.portlet > .portlet-title > .caption {
-			    float: left;
-			    display: inline-block;
-			    font-size: 18px;
-			    line-height: 18px;
-			    padding: 10px 0;
-			}
-			.portlet.light > .portlet-title > .caption {
-			    color: #666;
-			    padding: 10px 0;
-					font-family: "Open sans", sans-serif;
-			}
-			.portlet.light > .portlet-title > .caption > i {
-			    color: #777;
-			    font-size: 15px;
-			    font-weight: 300;
-			    margin-top: 3px;
-			}
-			.portlet.light > .portlet-title > .caption > .caption-subject {
-			    font-size: 16px;
-			}
+			
 			.font-dark {
 			    color: #2f353b !important;
 			}
 			.uppercase {
 				text-transform: uppercase;
-			}
-			.portlet.light > .portlet-title {
-				border-bottom: 1px solid #eef1f5;
-				min-height: 48px;
-			}
-			.portlet.light.bordered {
-				border:1px solid #e7ecf1 !important;
 			}
 			.page-menu .ui.menu {
 				box-shadow: none;
@@ -181,22 +142,10 @@
 				display: inline-block;
 			}
 			.ui.fixed.menu + .ui.grid.page-body {
+				min-height: calc(100vh - 31px);
 				margin:0;
 				background: rgb(54, 65, 80);
 				padding-top:50px;
-			}
-			.ui.grid.page-body > .page-menu,
-			.ui.grid.page-body > .page-content  {
-				padding-left: 0;
-				padding-right: 0;
-			}
-			.ui.grid.page-body .page-menu {
-				width:45px;
-			}
-			.ui.grid.page-body .page-content {
-				width: calc(100% - 45px);
-				background: #eef1f5;
-				padding: 25px 20px 10px;
 			}
 			.ui.grid.page-body .page-content.light {
 				background: #FFF;
@@ -231,7 +180,6 @@
 				$('.blurring.image').dimmer({on: 'hover'});
 				$('.ui.rating').rating({maxRating:5});
 				$('.ui.progress').progress();
-				$('.ui.fluid.accordion').accordion();
 			});
 		</script>
 		@section('pageFooter')

@@ -4,13 +4,28 @@
 @parent - Category
 @endsection
 
+@section('breadcrumb')
+<a href="{{ route('admin.home') }}" class="section">Home</a>
+<i class="icon circle divider"></i>
+<a href="#" class="section">Category</a>
+@endsection
+
+@section('page-header')
+Category Management
+@endsection
+
+@section('page-subheader')
+category management
+@endsection
+
 @section('left-side-content')
 <vue-form
 name="category-list"
 target-add="category-form"
 target-edit="category-form"
 action-delete="delete-category"
-action-refresh="get-category">
+action-refresh="get-category"
+:class="['accordion', 'styled', 'fluid']">
 	<vue-form-title
 	title="Category List"
 	icon="filter"
@@ -18,7 +33,8 @@ action-refresh="get-category">
 	:button-refresh="true"
 	:button-delete="true"
 	></vue-form-title>
-	<vue-form-content>
+	
+	<div class="content active">
 		<vue-table
 		:class="['very','basic','selectable','form-table']"
 		:can-edit="true"
@@ -30,8 +46,7 @@ action-refresh="get-category">
 		:with-check="true"
 		:with-control="true"
 		></vue-table>
-	</vue-form-content>
-	<vue-form-footer></vue-form-footer>
+	</div>
 </vue-form>
 @endsection
 
@@ -39,21 +54,23 @@ action-refresh="get-category">
 <vue-form
 name="category-form"
 action-save="save-category"
+:class="['accordion', 'styled', 'fluid']"
 :hidden="true">
 	<vue-form-title
 	title="Category Form"
 	icon="filter"
 	:button-save="true"
 	:button-cancel="true"
+	:page="false"
 	></vue-form-title>
 
-	<vue-form-fields>
+	<div class="content active">
 		<vue-input name="id" type="hidden" :class="['transition', 'hidden']"></vue-input>
 		<vue-input name="category" label="Category"
 		placeholder="Category"></vue-input>
 		<vue-textarea name="desc" label="Description"
 		placeholder="Description"></vue-textarea>
 		<vue-upload name="thumb" :show-preview="true" label="Category Thumb"></vue-upload>
-	</vue-form-fields>
+	</div>
 </vue-form>
 @endsection

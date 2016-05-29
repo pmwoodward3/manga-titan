@@ -1,6 +1,3 @@
-Vue.component('vue-form-fields',	require('./component/vue-form-fields.vue'));
-Vue.component('vue-form-content',	require('./component/vue-form-content.vue'));
-Vue.component('vue-form-footer',	require('./component/vue-form-footer.vue'));
 Vue.component('vue-form-title',		require('./component/vue-form-title.vue'));
 Vue.component('vue-row-control',	require('./component/vue-row-control.vue'));
 Vue.component('vue-grid-control',	require('./component/vue-grid-control.vue'));

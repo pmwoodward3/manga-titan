@@ -20,7 +20,7 @@ Read Manga Online
 @set('routeurl', str_ireplace(['%7B','%7D'],['{','}'], $routeurl))
 @section('content')
 	<div class="eleven wide column">
-		<div class="portlet light bordered">
+		<div class="ui styled fluid accordion">
 			<vue-form name="list" action-refresh="get-manga" :prevent-submit="false" method="get">
 				<div class="ui stackable grid manga-grid">
 					<vue-filter></vue-filter>
@@ -39,78 +39,58 @@ Read Manga Online
 		<div class="ui one column grid">
 			<div class="row">
 				<div class="column">
-					<div class="portlet light bordered">
-						<div class="portlet-title tabbable-line">
-              <div class="caption caption-md">
-								<i class="icon tag font-dark"></i>
-                <span class="caption-subject font-dark bold">Tags</span>
-              </div>
-            </div>
-						<div class="ui labels tags">
-							<a href="" class="ui red label">Yaoi</a>
-							<a href="" class="ui orange label">Yuri</a>
-							<a href="" class="ui yellow label">Big Tits</a>
-							<a href="" class="ui olive label">Yaoi</a>
-							<a href="" class="ui green label">Yaoi</a>
-							<a href="" class="ui teal label">Yaoi</a>
-							<a href="" class="ui blue label">Yaoi</a>
-							<a href="" class="ui violet label">Yaoi</a>
-							<a href="" class="ui purple label">Yaoi</a>
-							<a href="" class="ui pink label">Yaoi</a>
-							<a href="" class="ui brown label">Yaoi</a>
-							<a href="" class="ui label">Yaoi</a>
+					<div class="ui styled fluid accordion">
+						<div class="title active"><i class="icon tag"></i>Tags</div>
+						<div class="content active">
+							<div class="ui labels tags">
+								<a href="#" class="ui red label">Yaoi</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="column">
-					<div class="portlet light bordered">
-						<div class="portlet-title tabbable-line">
-              <div class="caption caption-md">
-								<i class="icon tag font-dark"></i>
-                <span class="caption-subject font-dark bold">Most Popular</span>
-              </div>
-            </div>
-						<div class="ui middle aligned selection divided list manga-side-list">
-							<div class="item" v-for="i in 5">
-								<div class="right floated content">
-									<div class="ui blue horizontal label">#@{{ i+1 }}</div>
+					<div class="ui styled fluid accordion">
+						<div class="title active"><i class="icon tag"></i>Most Popular</div>
+						<div class="content active">
+							<div class="ui middle aligned selection divided list manga-side-list">
+								<div class="item" v-for="i in 5">
+									<div class="right floated content">
+										<div class="ui blue horizontal label">#@{{ i+1 }}</div>
+									</div>
+									<div class="content">
+										<a>Team Hessasda dada asda efa sfa e asd</a>
+										<div class="description">
+											<div class="ui star rating" data-rating="3"></div>
+											<div class="right floated">1234 <i class="icon unhide"></i></div>
+										</div>
+									</div>
 								</div>
-							    <div class="content">
-							      <a>Team Hessasda dada asda efa sfa e asd</a>
-							      <div class="description">
-							      	<div class="ui star rating" data-rating="3"></div>
-									<div class="right floated">1234 <i class="icon unhide"></i></div>
-							      </div>
-							    </div>
-							  </div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="column">
-					<div class="portlet light bordered">
-						<div class="portlet-title tabbable-line">
-              <div class="caption caption-md">
-								<i class="icon tag font-dark"></i>
-                <span class="caption-subject font-dark bold">Newest Manga</span>
-              </div>
-            </div>
-						<div class="ui middle aligned selection divided list manga-side-list">
-							<div class="item" v-for="i in 5">
-								<!-- <div class="right floated content">
-									<div class="ui blue horizontal label">#@{{ i+1 }}</div>
-								</div> -->
-							    <div class="content">
-							      <a>Team Hessasda dada asda efa sfa e asd</a>
-							      <div class="description">
-							      	<div class="ui star rating" data-rating="3"></div>
-							      	<div class="right floated">Posted 1 day ago</div>
-							      </div>
-							    </div>
-							  </div>
+					<div class="ui styled fluid accordion">
+						<div class="title active"><i class="icon tag"></i>Most Popular</div>
+						<div class="content active">
+							<div class="ui middle aligned selection divided list manga-side-list">
+								<div class="item" v-for="i in 5">
+									<!-- <div class="right floated content">
+										<div class="ui blue horizontal label">#@{{ i+1 }}</div>
+									</div> -->
+								    <div class="content">
+								      <a>Team Hessasda dada asda efa sfa e asd</a>
+								      <div class="description">
+								      	<div class="ui star rating" data-rating="3"></div>
+								      	<div class="right floated">Posted 1 day ago</div>
+								      </div>
+								    </div>
+								  </div>
+							</div>
 						</div>
 					</div>
 				</div>

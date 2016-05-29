@@ -1,7 +1,7 @@
 /vendor
 /node_modules
 /public/modules/*
-/public/css/app.css
+/public/css/app.css*
 /public/js/jquery.slimscroll.js
 /resources/views/modules/*
 /storage/image/*

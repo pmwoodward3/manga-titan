@@ -4,13 +4,28 @@
 @parent - Users
 @endsection
 
+@section('breadcrumb')
+<a href="{{ route('admin.home') }}" class="section">Home</a>
+<i class="icon circle divider"></i>
+<a href="#" class="section">Users</a>
+@endsection
+
+@section('page-header')
+Users
+@endsection
+
+@section('page-subheader')
+user control
+@endsection
+
 @section('left-side-content')
 <vue-form
 name="user-list"
 target-add="user-form"
 target-edit="user-form"
 action-refresh="get-user"
-action-delete="delete-user">
+action-delete="delete-user"
+:class="['accordion', 'styled', 'fluid']">
 	<vue-form-title
 	title="Users Control"
 	icon="users"
@@ -19,9 +34,9 @@ action-delete="delete-user">
 	:button-delete="true"
 	></vue-form-title>
 
-	<div class="ui segment form-content">
+	<div class="content active">
 		<vue-table
-		:class="['very','basic','selectable','form-table']"
+		:class="['selectable']"
 		:can-edit="true"
 		:can-delete="true"
 		:maps="[
@@ -32,7 +47,6 @@ action-delete="delete-user">
 		:with-check="true"
 		:with-control="true"></vue-table>
 	</div>
-	<vue-form-footer></vue-form-footer>
 </vue-form>
 @endsection
 
@@ -40,21 +54,21 @@ action-delete="delete-user">
 <vue-form
 name="user-form"
 action-save="save-user"
+:class="['accordion', 'styled', 'fluid']"
 :hidden="true">
 	<vue-form-title
 	title="User Form"
 	icon="user"
 	:button-save="true"
 	:button-cancel="true"
+	:page="false"
 	></vue-form-title>
 
-	<vue-form-fields>
+	<div class="content active">
 		<vue-input name="id" type="hidden" :class="['hidden','transition']"></vue-input>
-		<vue-input name="email" label="Email"
-		placeholder="Email"></vue-input>
-		<vue-input name="password" label="Password" type="password"
-		placeholder="Password"></vue-input>
+		<vue-input name="email" label="Email" placeholder="Email"></vue-input>
+		<vue-input name="password" label="Password" type="password" placeholder="Password"></vue-input>
 		<vue-checkbox name="is_active" label="Activate" placeholder="Register and active user."></vue-checkbox>
-	</vue-form-fields>
+	</div>
 </vue-form>
 @endsection
