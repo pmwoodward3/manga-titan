@@ -1,7 +1,7 @@
 @extends('admin::master')
 
 @section('title')
-@parent - Chapter Create
+@parent - Chapter Detail
 @endsection
 
 @section('breadcrumb')
@@ -11,15 +11,15 @@
 <i class="icon circle divider"></i>
 <a href="{{ route('admin.manga') }}" class="section">Chapter</a>
 <i class="icon circle divider"></i>
-<a href="#" class="section">Create</a>
+<a href="#" class="section">Detail</a>
 @endsection
 
 @section('page-header')
-Create Chapter
+Detail Chapter
 @endsection
 
 @section('page-subheader')
-Create Chapter Manga
+Detail Chapter Manga
 @endsection
 
 @section('content')

@@ -12,7 +12,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controller
 
 	Route::group(['prefix' => 'chapter'], function () {
 		Route::get('{manga_id}/create', ['uses' => 'ChapterController@create', 'as' => 'chapter.create']);\
-		Route::get('{manga_id}/edit/{chapter_id}', ['uses' => 'ChapterController@edit', 'as' => 'chapter.edit']);
+		Route::get('{manga_id}/detail/{chapter_id}', ['uses' => 'ChapterController@detail', 'as' => 'chapter.detail']);
 	});
 	
 	Route::get('page/{id_manga}', ['uses' => 'AdminController@page', 'as' => 'page']);

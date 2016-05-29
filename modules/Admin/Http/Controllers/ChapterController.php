@@ -9,9 +9,9 @@ class ChapterController extends Controller {
 		return view('admin::chapter.create');
 	}
 
-	public function edit($manga_id, $chapter_id)
+	public function detail($manga_id, $chapter_id)
 	{
-		return view('admin::chapter.edit');
+		return view('admin::chapter.detail');
 	}
 	
 }
