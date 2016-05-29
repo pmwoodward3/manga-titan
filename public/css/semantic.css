@@ -1746,7 +1746,7 @@ input::selection {
   width: 1.78571429em;
   height: 1.78571429em;
   line-height: 1.78571429em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
   font-style: normal;
   font-weight: bold;
   box-shadow: 0px 0px 0px 1px transparent inset;
@@ -12803,7 +12803,7 @@ ol.ui.list ol li,
 
 .ui.list .list > a.item i.icon,
 .ui.list > a.item i.icon {
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 /* Header Link */
@@ -15914,9 +15914,9 @@ ol.ui.horizontal.list li:before,
 .ui.breadcrumb .divider {
   display: inline-block;
   opacity: 0.7;
-  margin: 0em 0.21428571rem 0em;
+  margin: 0em 0.35714286rem 0em;
   font-size: 0.92857143em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
   vertical-align: baseline;
 }
 
@@ -15933,7 +15933,7 @@ ol.ui.horizontal.list li:before,
 /* Icon Divider */
 
 .ui.breadcrumb .icon.divider {
-  font-size: 0.85714286em;
+  font-size: 0.35714286rem;
   vertical-align: baseline;
 }
 
@@ -16003,6 +16003,17 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Theme Overrides
 *******************************/
+
+.ui.breadcrumb .icon.divider {
+  position: relative;
+  top: -3px;
+  opacity: .4;
+}
+
+.ui.breadcrumb a.section {
+  color: #888;
+  line-height: 20px;
+}
 
 /*******************************
          Site Overrides
@@ -17192,8 +17203,8 @@ ol.ui.horizontal.list li:before,
 -----------------------*/
 
 .ui.grid {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
   margin-left: -1rem;
   margin-right: -1rem;
 }
@@ -17211,7 +17222,7 @@ ol.ui.horizontal.list li:before,
 /* Preserve Rows Spacing on Consecutive Grids */
 
 .ui.grid + .grid {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 /*-------------------
@@ -17258,8 +17269,8 @@ ol.ui.horizontal.list li:before,
   align-items: stretch;
   width: 100% !important;
   padding: 0rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /*-------------------
@@ -17269,8 +17280,8 @@ ol.ui.horizontal.list li:before,
 /* Vertical padding when no rows */
 
 .ui.grid > .column:not(.row) {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .ui.grid > .row > .column {
@@ -17314,11 +17325,11 @@ ol.ui.horizontal.list li:before,
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  margin: 1rem 1rem;
+  margin: 0.5rem 1rem;
 }
 
 .ui.grid .column + .ui.vertical.divider {
-  height: calc(50% -  1rem );
+  height: calc(50% -  0.5rem );
 }
 
 /* Remove Border on Last Horizontal Segment */
@@ -18354,8 +18365,8 @@ ol.ui.horizontal.list li:before,
 
 .ui[class*="vertically divided"].grid > .column:not(.row),
 .ui[class*="vertically divided"].grid > .row > .column {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -18655,10 +18666,10 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .row > .brown.column,
 .ui.grid > .row > .grey.column,
 .ui.grid > .row > .black.column {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Red */
@@ -18980,8 +18991,8 @@ ol.ui.horizontal.list li:before,
   .ui.grid > .doubling.row > .column,
   .ui.doubling.grid > .row > .column {
     display: inline-block !important;
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
     box-shadow: none !important;
     margin: 0em;
   }
@@ -19088,8 +19099,8 @@ ol.ui.horizontal.list li:before,
 
   .ui.grid > .doubling.row > .column,
   .ui.doubling.grid > .row > .column {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
     margin: 0em !important;
     box-shadow: none !important;
   }
@@ -19206,7 +19217,7 @@ ol.ui.horizontal.list li:before,
     width: 100% !important;
     margin: 0em 0em !important;
     box-shadow: none !important;
-    padding: 1rem 1rem !important;
+    padding: 0.5rem 1rem !important;
   }
 
   .ui.stackable.grid:not(.vertically) > .row {
@@ -19252,8 +19263,8 @@ ol.ui.horizontal.list li:before,
   .ui.stackable.divided:not(.vertically).grid > .row > .column {
     border-top: 1px solid #e7ecf1;
     box-shadow: none !important;
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
   }
 
   .ui.stackable.celled.grid > .row {
@@ -19415,6 +19426,11 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Theme Overrides
 *******************************/
+
+.ui.grid > .row {
+  padding-top: 0;
+  padding-bottom: 1rem;
+}
 
 /*******************************
          Site Overrides
@@ -23956,7 +23972,7 @@ Floated Menu / Item
 .ui.cards > .card .meta,
 .ui.card .meta {
   font-size: 1em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 .ui.cards > .card .meta *,
@@ -24009,7 +24025,7 @@ Floated Menu / Item
 
 .ui.cards > .card .meta > a:not(.ui),
 .ui.card .meta > a:not(.ui) {
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 .ui.cards > .card .meta > a:not(.ui):hover,
@@ -24108,7 +24124,7 @@ Floated Menu / Item
   padding: 0.75em 1em;
   top: 0em;
   left: 0em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
   box-shadow: none;
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
@@ -24856,7 +24872,7 @@ a.ui.card:hover,
 .ui.comments .comment .metadata {
   display: inline-block;
   margin-left: 0.5em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
   font-size: 0.875em;
 }
 
@@ -25123,7 +25139,7 @@ a.ui.card:hover,
   font-weight: normal;
   font-size: 1em;
   font-style: normal;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 /*--------------
@@ -25180,7 +25196,7 @@ a.ui.card:hover,
   font-style: normal;
   margin: 0em 0em 0em 0.5em;
   padding: 0em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 /*--------------
@@ -25571,7 +25587,7 @@ a.ui.card:hover,
 /* Meta */
 
 .ui.items > .item .meta > a:not(.ui) {
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 .ui.items > .item .meta > a:not(.ui):hover {
@@ -25635,7 +25651,7 @@ a.ui.card:hover,
   padding: 0em 0em 0em;
   top: 0em;
   left: 0em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
   box-shadow: none;
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
@@ -27844,7 +27860,7 @@ body.dimmable > .dimmer {
 .ui.dropdown .menu > .item > .description {
   float: right;
   margin: 0em 0em 0em 1em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 /*-----------------
@@ -29999,7 +30015,7 @@ a.ui.nag {
 .ui.inverted.nags .nag .title,
 .ui.inverted.nag .close,
 .ui.inverted.nag .title {
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 /*******************************
@@ -31425,7 +31441,7 @@ a.ui.nag {
 .ui.search > .results .result .description {
   margin-top: 0;
   font-size: 0.92857143em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 .ui.search > .results .result .price {
@@ -31658,7 +31674,7 @@ a.ui.nag {
   float: left;
   padding: 0.4em 1em;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.4);
+  color: #888;
 }
 
 /*******************************

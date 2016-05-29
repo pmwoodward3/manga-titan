@@ -22,10 +22,10 @@
 	<div id="admin-area" class="sixteen wide column">
 		@section('content')
 		<div class="ui grid">
-			<div class="eight wide column form-admin" id="admin-side-left">
+			<div class="ten wide column form-admin" id="admin-side-left">
 				@yield('left-side-content')
 			</div>
-			<div class="eight wide column form-admin" id="admin-side-right">
+			<div class="six wide column form-admin" id="admin-side-right">
 				@yield('right-side-content')
 			</div>
 		</div>

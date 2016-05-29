@@ -20,7 +20,7 @@ Read Manga Online
 @set('routeurl', str_ireplace(['%7B','%7D'],['{','}'], $routeurl))
 @section('content')
 	<div class="eleven wide column">
-		<div class="portlet light bordered">
+		<div class="ui styled fluid accordion">
 			<vue-form name="list" action-refresh="get-manga" :prevent-submit="false" method="get">
 				<div class="ui stackable grid manga-grid">
 					<vue-filter></vue-filter>

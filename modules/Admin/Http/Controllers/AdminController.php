@@ -8,11 +8,6 @@ class AdminController extends Controller {
 	{
 		return view('admin::home');
 	}
-	
-	public function manga()
-	{
-		return view('admin::manga');
-	}
 
 	public function page($id_manga)
 	{

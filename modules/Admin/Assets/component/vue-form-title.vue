@@ -2,8 +2,8 @@
 <div class="title active">
 	<div class="caption"><i class="icon" :class="icon" v-if="icon != null"></i><span>{{ title }}</span></div>
 	<div class="ui action buttons">
-		<slot name="left"></slot>
 		<vue-page v-if="page"></vue-page>
+		<slot name="left"></slot>
 		<a class="ui icon very basic button" v-if="buttonAdd" @click="addClick"><i class="icon plus"></i></a>
 		<a class="ui icon very basic button" v-if="buttonRefresh" @click="refreshClick"><i class="icon refresh"></i></a>
 		<a class="ui icon very basic button" v-if="buttonSave" @click="saveClick"><i class="icon save"></i></a>
