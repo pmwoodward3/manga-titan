@@ -11,12 +11,16 @@ class Comment extends Model {
         return $this->morphedByMany(__NAMESPACE__.'\Manga', 'commentable', 'commentable');
     }
 
+    public function chapter() {
+        return $this->morphedByMany(__NAMESPACE__.'\Chapter', 'commentable', 'commentable');
+    }
+
     public function page() {
-        return $this->morphedByMany(__NAMESPACE__.'\MangaPage', 'commentable', 'commentable');
+        return $this->morphedByMany(__NAMESPACE__.'\Page', 'commentable', 'commentable');
     }
 
     public function user() {
-    	return $this->belongsTo(__NAMESPACE__.'\Users', 'id_users');
+    	return $this->belongsTo(__NAMESPACE__.'\Users');
     }
 
     public function commentable() {

@@ -3,7 +3,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Entities\Manga;
-use Modules\Core\Entities\MangaPage;
+use Modules\Core\Entities\Page;
 use Modules\Core\Entities\Category;
 use File;
 
@@ -34,21 +34,21 @@ class ModelEventProvider extends ServiceProvider {
 					File::delete(storage_path('image/'.$manga->thumb));
 			}
 		});
-		MangaPage::saving(function ($page) {
+		Page::saving(function ($page) {
 			$extension = File::extension($page->img_path);
 			$newfilename = sprintf('%s-%s.%s', $page->id_manga, $page->page_num, $extension);
 			if (File::exists(storage_path('image/'.$page->img_path)))
 				File::move(storage_path('image/'.$page->img_path), storage_path('image/'.$newfilename));
 			$page->img_path = $newfilename;
 		});
-		MangaPage::deleting(function ($page) {
+		Page::deleting(function ($page) {
 			if ($page->img_path != '') {
 				if (File::exists(storage_path('image/'. $page->img_path)))
 					File::delete(storage_path('image/' . $page->img_path));
 			}
 		});
-		MangaPage::deleted(function ($page) {
-			$pages = MangaPage::where('id_manga', $page->id_manga)->orderBy('page_num')->get();
+		Page::deleted(function ($page) {
+			$pages = Page::where('id_manga', $page->id_manga)->orderBy('page_num')->get();
 			if ($pages->count() > 0) {
 				foreach ($pages as $index => $page) {
 					$page->page_num = $index + 1;

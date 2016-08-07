@@ -15,8 +15,8 @@ class CreateActivityTable extends Migration {
         Schema::create('activity', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('id_manga')->unsigned();
-            $table->integer('id_users')->unsigned();
+            $table->integer('manga_id')->unsigned();
+            $table->integer('users_id')->unsigned();
             $table->timestamps();
         });
     }

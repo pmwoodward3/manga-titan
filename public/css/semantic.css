@@ -697,7 +697,7 @@ input::selection {
   padding: 0.78571429em 1.5em 0.78571429em;
   text-transform: none;
   text-shadow: none;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1em;
   font-style: normal;
   text-align: center;
@@ -1462,7 +1462,7 @@ input::selection {
 .ui.basic.button {
   background: transparent none !important;
   color: rgba(0, 0, 0, 0.6) !important;
-  font-weight: 300;
+  font-weight: 600;
   border-radius: 0px;
   text-transform: none;
   text-shadow: none !important;
@@ -19682,7 +19682,7 @@ ol.ui.horizontal.list li:before,
   border-radius: 0em 0em 0px 0px;
   background: #FFFFFF;
   margin: 0em 0px 0px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 5px 5px rgba(102, 102, 102, 0.1);
   -webkit-box-orient: vertical !important;
   -webkit-box-direction: normal !important;
   -ms-flex-direction: column !important;

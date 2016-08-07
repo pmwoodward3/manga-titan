@@ -9,10 +9,10 @@ class Rating extends Model {
 	protected $table = 'rating';
 
 	public function manga() {
-		$this->belongsTo(__NAMESPACE__.'\Manga', 'id_manga');
+		$this->belongsTo(__NAMESPACE__.'\Manga');
 	}
 
 	public function users() {
-		$this->belongsTo(__NAMESPACE__.'\Users', 'id_users');
+		$this->belongsTo(__NAMESPACE__.'\Users');
 	}
 }

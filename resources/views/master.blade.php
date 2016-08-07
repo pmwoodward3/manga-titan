@@ -20,10 +20,6 @@
 				height: 29px;
 				margin-right: 5px;
 			}
-			.ui.menu .dropdown.item .menu {
-				border-radius: 0;
-				box-shadow: 5px 5px rgba(102,102,102,.1);
-			}
 		</style>
 	</head>
 	<body>
@@ -176,7 +172,7 @@
 					}
 				});
 
-				$('.ui.dropdown.menubar').dropdown();
+				$('.ui.pointing.dropdown.menubar').dropdown();
 				$('.blurring.image').dimmer({on: 'hover'});
 				$('.ui.rating').rating({maxRating:5});
 				$('.ui.progress').progress();

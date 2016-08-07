@@ -14,15 +14,15 @@ class Users extends EloquentUser implements BillableContract {
     protected $table = 'users';
 
     public function manga() {
-    	return $this->hasMany(__NAMESPACE__.'\Manga', 'id_uploader');
+    	return $this->hasMany(__NAMESPACE__.'\Manga');
     }
 
-    public function fullname() {
+    public function getFullnameAttribute() {
     	return $this->first_name . ' ' . $this->last_name;
     }
 
     public function comments() {
-    	return $this->hasMany(__NAMESPACE__.'\Comment', 'id_users');
+    	return $this->hasMany(__NAMESPACE__.'\Comment');
     }
 
     protected $dates = ['trial_ends_at', 'subscription_ends_at'];

@@ -4,7 +4,7 @@ namespace Modules\Manga\Http\Controllers\Traitajax;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Modules\Manga\Entities\Manga;
-use Modules\Manga\Entities\MangaPage;
+use Modules\Manga\Entities\Page;
 use Modules\Manga\Entities\Category;
 use File;
 
@@ -241,7 +241,7 @@ trait TraitAdmin {
 	public function deletePage($data) {
 		$result = ['message' => 'failed delete page', 'success' => false];
 		try {
-			MangaPage::destroy($data['page_id']);
+			Page::destroy($data['page_id']);
 
 			$result['message'] = 'Success delete all pages';
 			$result['success'] = true;

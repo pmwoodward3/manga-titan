@@ -14,15 +14,19 @@ class Manga extends Model implements TaggableInterface{
     protected $table = 'manga';
 
     public function category() {
-    	return $this->belongsTo(__NAMESPACE__ . '\Category', 'id_category');
+    	return $this->belongsTo(__NAMESPACE__ . '\Category');
     }
 
-    public function mangapages() {
-        return $this->hasMany(__NAMESPACE__. '\MangaPage', 'id_manga');
+    public function chapter() {
+        return $this->hasMany(__NAMESPACE__. '\Chapter');
+    }
+
+    public function page() {
+        return $this->hasManyThrough(__NAMESPACE__.'\Page', __NAMESPACE__.'\Chapter');
     }
 
     public function uploader() {
-        return $this->belongsTo(__NAMESPACE__.'\Users', 'id_uploader');
+        return $this->belongsTo(__NAMESPACE__.'\Users');
     }
 
     public function getTagsArr(){

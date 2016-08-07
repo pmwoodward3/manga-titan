@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Pingpong\Modules\Routing\Controller;
 use Modules\Core\Http\Controllers\Iface\AjaxResponse;
 use Modules\Core\Entities\Manga;
-use Modules\Core\Entities\MangaPage;
+use Modules\Core\Entities\Page;
 
 class PageController extends Controller implements AjaxResponse {
 	
@@ -17,7 +17,7 @@ class PageController extends Controller implements AjaxResponse {
 
 		try {
 			$manga = Manga::findOrFail($data['id_manga']);
-			$pages = $manga->mangapages->sortBy('page_num');
+			$pages = $manga->page->sortBy('page_num');
 			$max_page = ceil($pages->count() / 50);
 			$pages = $pages->forPage($page_num, 50);
 
@@ -53,7 +53,7 @@ class PageController extends Controller implements AjaxResponse {
 			$pages = $manga->mangapages->sortBy('page_num');
 			$nextcounter = $pages->count() + 1;
 			foreach ($data['image'] as $img) {
-				$page = new MangaPage;
+				$page = new Page;
 				$page->page_num = $nextcounter;
 				$page->img_path = $img;
 				$manga->mangapages()->save($page);
@@ -72,7 +72,7 @@ class PageController extends Controller implements AjaxResponse {
 	public static function deleteData($data) {
 		$result = ['message' => '', 'success' => false];
 		try {
-			MangaPage::destroy($data['id']);
+			Page::destroy($data['id']);
 			$result['message'] = 'Success Delete data';
 			$result['success'] = true;
 		} catch (ModelNotFoundException $e) {

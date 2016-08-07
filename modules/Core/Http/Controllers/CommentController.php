@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Pingpong\Modules\Routing\Controller;
 use Modules\Core\Http\Controllers\Iface\AjaxResponse;
 use Modules\Core\Entities\Manga;
-use Modules\Core\Entities\MangaPage;
+use Modules\Core\Entities\Page;
 use Modules\Core\Entities\Comment;
 use Sentinel;
 
@@ -25,7 +25,7 @@ class CommentController extends Controller implements AjaxResponse {
 			}
 		} elseif (array_key_exists('id_page', $data)) {
 			try {
-				$page = MangaPage::findOrFail($data['id_page']);
+				$page = Page::findOrFail($data['id_page']);
 				$comments = $page->comments->sortBy('created_at');
 			} catch (ModelNotFoundException $e) {
 				$result['message'] = $e->getMessage();
@@ -70,7 +70,7 @@ class CommentController extends Controller implements AjaxResponse {
 			}
 		} elseif (array_key_exists('id_page', $data)) {
 			try {
-				$page = MangaPage::findOrFail($data['id_page']);
+				$page = Page::findOrFail($data['id_page']);
 				$page->comments()->save($comment);
 				$result['message'] = "Comment saved";
 				$result['success'] = true;

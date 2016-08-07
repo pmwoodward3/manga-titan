@@ -14,7 +14,7 @@ class Chapter extends Model {
 
     public function pages()
     {
-    	// return $this->hasMany(__NAMESPACE__.'\Pages');
+    	return $this->hasMany(__NAMESPACE__.'\Page');
     }
 
 }

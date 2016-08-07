@@ -22,7 +22,7 @@ class MangaController extends Controller implements AjaxResponse {
 			$coldata[] = [
 				'id' => $mang->id,
 				'title' => $mang->title,
-				'page' => $mang->mangapages->count(),
+				'page' => $mang->page->count(),
 				'description' => $mang->description,
 				'category' => $mang->category->id,
 				'tags' => $mang->getTagsArr(),

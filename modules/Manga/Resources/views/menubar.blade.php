@@ -3,7 +3,7 @@
 <div class="right menu">
 	<a href="" class="item icon"><i class="icon large alarm outline"></i></a>
 	<a href="" class="item icon"><i class="icon large calendar"></i></a>
-	<div class="ui pointing dropdown menubar link item">
+	<div class="ui pointing dropdown menubar top right link item">
 		<img src="{{ url('manga/image/thumb/dummy-user.png') }}" class="ui user image circular">
 		<span class="text">{{ $user->first_name }} {{ $user->last_name }}</span>
 		<i class="dropdown icon"></i>
